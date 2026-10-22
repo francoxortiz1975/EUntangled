@@ -183,9 +183,9 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:14px 24p
 </main>
 
 <aside class="chat">
-  <div class="hd"><b><i class="ph ph-chats-circle"></i>EUgene AI</b><span class="meta">Answers from verified official sources for Ana's case. Every answer is cited.</span></div>
+  <div class="hd"><b><i class="ph ph-chats-circle"></i>EUgenia</b><span class="meta">Answers from verified official sources for Ana's case. Every answer is cited.</span></div>
   <div class="msgs" id="msgs">
-    <div class="m a">Hi Ana, I am EUgene, your relocation agent. Ask me anything about your move: permits, housing, bank, health insurance. If a rule is not in my verified sources, I will tell you to confirm with a specialist.</div>
+    <div class="m a">Hi Ana, I am EUgenia, your relocation agent. Ask me anything about your move: permits, housing, bank, health insurance. If a rule is not in my verified sources, I will tell you to confirm with a specialist.</div>
     <div class="sugg" id="sugg">
       <button>Can I use Visale as a 28-year-old on a permanent contract?</button>
       <button>What documents do I need to rent a flat in Paris?</button>
@@ -195,7 +195,7 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:14px 24p
       <button>How much can the bank charge me for overdrafts on a basic account?</button>
     </div>
   </div>
-  <form id="chatf"><input id="chatq" placeholder="Ask EUgene about your relocation…" autocomplete="off"><button class="btn" type="submit"><i class="ph ph-paper-plane-tilt"></i></button></form>
+  <form id="chatf"><input id="chatq" placeholder="Ask EUgenia about your relocation…" autocomplete="off"><button class="btn" type="submit"><i class="ph ph-paper-plane-tilt"></i></button></form>
 </aside></div>
 
 <script>
@@ -318,13 +318,13 @@ async function askQ(q) {
   if (!q.trim() || !CID) return;
   const sg = $("sugg"); if (sg) sg.remove();
   addMsg("u", esc(q));
-  const t = addMsg("a", `<span class="spin"></span>EUgene is searching verified rules for your case…`);
+  const t = addMsg("a", `<span class="spin"></span>EUgenia is searching verified rules for your case…`);
   try {
     const r = await call(`/cases/${CID}/ask`, { question: q });
     const src = [...new Map((r.citations || []).map(c => [c.source_url, c])).values()];
     t.innerHTML = esc(r.answer) + src.map(c => `<span class="src"><i class="ph ph-seal-check"></i> <a href="${esc(c.source_url)}" target="_blank">${esc(host(c.source_url))}</a> · verified ${esc((c.last_verified || "").slice(0, 10))}</span>`).join("");
     load();
-  } catch (e) { t.textContent = "Could not reach EUgene: " + e.message; }
+  } catch (e) { t.textContent = "Could not reach EUgenia: " + e.message; }
 }
 document.querySelectorAll("#sugg button").forEach(b => b.onclick = () => askQ(b.textContent));
 $("chatf").onsubmit = (e) => { e.preventDefault(); const q = $("chatq").value; $("chatq").value = ""; askQ(q); };
