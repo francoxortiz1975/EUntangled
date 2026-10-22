@@ -1,5 +1,6 @@
 """Case agents: Retrieval, Planner, Watcher, Orchestrator."""
 import json
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
 
 from backend.common import ask_json, db, embed, log_run
@@ -162,9 +163,11 @@ def watcher():
             case_ids = sorted({s["case_id"] for s in steps})
             log_run("watcher", f"rule.changed on {ev['rule_key']}: {len(case_ids)} affected case(s)",
                     metrics={"event_id": ev["id"], "cases": case_ids})
-            for cid in case_ids:
-                results.append(replan(cid, {"type": "rule.changed", "rule_key": ev["rule_key"],
-                                            "event_id": ev["id"], **(ev.get("payload") or {})}))
+            cause = {"type": "rule.changed", "rule_key": ev["rule_key"], "event_id": ev["id"], **(ev.get("payload") or {})}
+            # Ana first so the demo shows her re-plan; other cases re-plan in parallel.
+            case_ids.sort(key=lambda c: 0 if db.table("cases").select("employee_name").eq("id", c).single().execute().data["employee_name"] == "Ana Torres" else 1)
+            with ThreadPoolExecutor(max_workers=6) as pool:
+                results += list(pool.map(lambda cid: replan(cid, cause), case_ids))
         elif ev["type"] == "step.delayed":
             p = ev["payload"]
             log_run("orchestrator", f"step.delayed {p.get('rule_key')} by {p.get('days')} days, routed to planner",
