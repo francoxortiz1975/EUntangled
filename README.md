@@ -50,7 +50,13 @@ Moving to Paris as a non-EU employee means 10+ admin steps that depend on each o
 
 **Run 2: 20 hard, multi-condition questions, 5 per category**
 
-<!-- EVAL_BY_CATEGORY -->
+| Category | Correct: no data | Correct: EUntangled | Working source link: no data | Working source link: EUntangled |
+|---|---|---|---|---|
+| Housing | 1 / 5 | **5 / 5** | 1 / 5 | **5 / 5** |
+| Bank | 3 / 5 | **5 / 5** | 2 / 5 | 4 / 5 |
+| Visa & permits | 3 / 5 | 3 / 5 | 3 / 5 | **5 / 5** |
+| Health & social security | 2 / 5 | 2 / 5 | 4 / 5 | **5 / 5** |
+| **Total** | **9 / 20 (45%)** | **15 / 20 (75%)** | **10 / 20 (50%)** | **19 / 20 (95%)** |
 
 How it works:
 - Questions and references were generated from the verified quotes in our corpus.
