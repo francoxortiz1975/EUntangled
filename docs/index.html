@@ -4,123 +4,102 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EUntangled</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <style>
-:root{--bg:#fff;--fg:#0a0a0a;--muted:#666;--line:#eaeaea;--soft:#fafafa;--red:#e5484d;--amber:#f5a524;--green:#18a058}
+:root{--bg:#0b0b0b;--card:#121212;--card2:#171717;--fg:#ededed;--muted:#8f8f8f;--line:#262626;--red:#ff6369;--amber:#f5a524}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--fg);font:14px/1.5 Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-.mono{font-family:"Geist Mono",ui-monospace,monospace}
-header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.bar{max-width:1200px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:16px}
-.logo{font-weight:600;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
-.logo i{width:18px;height:18px;background:var(--fg);clip-path:polygon(50% 0,100% 100%,0 100%)}
-.tabs{display:flex;gap:4px;margin-left:24px}
-.tab{border:0;background:none;padding:6px 12px;border-radius:6px;color:var(--muted);cursor:pointer;font:inherit}
-.tab.on{color:var(--fg);background:var(--soft);box-shadow:inset 0 0 0 1px var(--line)}
+.mono{font-family:"Geist Mono",monospace}
+a{color:inherit}
+header{position:sticky;top:0;z-index:5;background:rgba(11,11,11,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{padding:0 28px;height:60px;display:flex;align-items:center;gap:16px}
+.logo{font-weight:600;letter-spacing:-.02em;font-size:15px}
+.tabs{display:flex;gap:4px;margin-left:20px}
+.tab{border:0;background:none;padding:6px 12px;border-radius:8px;color:var(--muted);cursor:pointer;font:inherit}
+.tab.on{color:var(--fg);background:var(--card2);box-shadow:inset 0 0 0 1px var(--line)}
 .sp{flex:1}
-.pill{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);display:inline-flex;align-items:center;gap:6px}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--muted)}
-.dot.live{background:var(--green)}.dot.off{background:var(--red)}
-main{max-width:1200px;margin:0 auto;padding:32px 24px 80px}
-h1{font-size:32px;font-weight:600;letter-spacing:-.04em}
-h2{font-size:14px;font-weight:600;margin-bottom:12px}
-.sub{color:var(--muted)}
-.grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:24px;margin-top:24px}.grid>div{min-width:0}
-.card{border:1px solid var(--line);border-radius:12px;background:#fff}
-.pad{padding:20px}
-.btn{font:inherit;font-weight:500;border-radius:8px;padding:8px 14px;cursor:pointer;border:1px solid var(--fg);background:var(--fg);color:#fff;transition:.15s}
-.btn:hover{opacity:.85}.btn.ghost{background:#fff;color:var(--fg);border-color:var(--line)}.btn.ghost:hover{border-color:var(--fg)}
-.btn:disabled{opacity:.4;cursor:wait}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.today{display:flex;gap:24px;align-items:flex-start;justify-content:space-between}
-.today .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.today .t{font-size:22px;font-weight:600;letter-spacing:-.03em;margin:6px 0}
-.count{text-align:right;min-width:120px}.count b{font-size:40px;font-weight:600;letter-spacing:-.04em;display:block;line-height:1}
-.steps{list-style:none}
-.step{display:grid;grid-template-columns:28px 1fr auto;gap:12px;padding:14px 20px;border-top:1px solid var(--line);cursor:pointer;align-items:center}
-.step:hover{background:var(--soft)}.step.sel{background:var(--soft)}
-.ix{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:11px;color:var(--muted)}
-.done .ix{background:var(--fg);color:#fff;border-color:var(--fg)}
-.st{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
-.st.risk{color:var(--red);border-color:#f3c5c6;background:#fff5f5}
-.st.next{color:#fff;background:var(--fg);border-color:var(--fg)}
-.st.done{color:var(--muted)}
+.pill{font-size:12px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--muted)}.dot.live{background:#3fb950}.dot.off{background:var(--red)}
+.shell{display:grid;grid-template-columns:minmax(0,1fr) 400px;min-height:calc(100dvh - 61px)}
+main{padding:28px 28px 80px;min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px}
+.pad{padding:24px}
 .meta{font-size:12px;color:var(--muted)}
-.why dt{font-size:12px;color:var(--muted);margin-top:12px}.why dd{margin-top:2px}
-.why a{color:var(--fg);word-break:break-all}
-.feed{list-style:none;max-height:420px;overflow:auto}
-.feed li{padding:12px 20px;border-top:1px solid var(--line);font-size:13px}
+h2{font-size:20px;font-weight:600;letter-spacing:-.02em}
+.top{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px}
+.hero{background:#f2f2f2;color:#0b0b0b;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:24px}
+.hero .row1{display:flex;justify-content:space-between;align-items:center}
+.hero .row1 .meta{color:#555}
+.hero .tag{font-size:12px;padding:4px 10px;border-radius:999px;background:#e2e2e2;color:#333}
+.hero h1{font-size:40px;line-height:1.1;letter-spacing:-.035em;font-weight:600}
+.hero h1 span{color:#6b6b6b}
+.week{background:#e6e6e6;border-radius:16px;padding:18px 20px}
+.week .k{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#444;margin-bottom:8px}
+.week li{list-style:none;display:flex;justify-content:space-between;gap:16px;padding:6px 0;font-size:15px}
+.week li span:last-child{color:#555;white-space:nowrap}
+.btn{font:inherit;font-weight:500;border-radius:999px;padding:10px 18px;cursor:pointer;border:1px solid var(--fg);background:var(--fg);color:#0b0b0b;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,opacity .15s}
+.btn:active{transform:translateY(1px)}.btn:disabled{opacity:.4;cursor:wait}
+.btn.dark{background:#0b0b0b;color:#f2f2f2;border-color:#0b0b0b}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}.btn.ghost:hover{border-color:var(--fg)}
+.side{display:flex;flex-direction:column;gap:20px}
+.count{display:flex;gap:24px;align-items:center}
+.ring{position:relative;width:120px;height:120px;flex:none}.ring svg{transform:rotate(-90deg)}
+.big{font-size:40px;font-weight:600;letter-spacing:-.04em;line-height:1}
+.risk{color:var(--amber)}
+.section{margin-top:20px}
+.jhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.journey{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px}
+.steps{list-style:none;position:relative}
+.step{display:flex;gap:14px;align-items:center;padding:10px 12px;border-radius:14px;cursor:pointer;position:relative}
+.step:hover,.step.sel{background:var(--card2)}
+.step .ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:var(--bg);flex:none;font-size:18px;z-index:1}
+.step.done .ic{background:var(--fg);color:#0b0b0b;border-color:var(--fg)}
+.step.next .ic{border:2px solid var(--fg)}
+.step.at_risk .ic{border-color:var(--amber);color:var(--amber)}
+.step.blocked .ic{color:#5c5c5c;border-style:dashed}
+.steps::before{content:"";position:absolute;left:31px;top:24px;bottom:24px;width:1px;background:var(--line)}
+.step .t{font-weight:500}.step .s{font-size:12px;color:var(--muted)}
+.st{font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-left:8px;white-space:nowrap}
+.st.done{color:var(--fg)}.st.at_risk{color:var(--amber);border-color:#5a4210}.st.next{background:var(--fg);color:#0b0b0b;border-color:var(--fg)}
+.detail{background:var(--card2);border:1px solid var(--line);border-radius:18px;padding:24px;align-self:start;position:sticky;top:80px}
+.detail .h{display:flex;gap:10px;align-items:center;font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.detail h3{font-size:24px;letter-spacing:-.02em;font-weight:600;margin:10px 0 6px}
+.box{border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:16px;background:var(--card)}
+.box b{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.quote{font-family:"Geist Mono",monospace;font-size:12px;color:#bdbdbd}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13px;margin-top:12px}.kv span:nth-child(odd){color:var(--muted)}
+.alert{border:1px solid #5a4210;background:#1d1608;color:#f5d58a;border-radius:16px;padding:16px 20px;margin-bottom:20px}
+.alert b{display:block;margin-bottom:4px;color:#ffe2a3}
+.alert.info{border-color:var(--line);background:var(--card);color:var(--fg)}
+.feed{list-style:none}
+.feed li{padding:14px 24px;border-top:1px solid var(--line);font-size:13px}
 .feed .ag{font-weight:600}
-.tag{font-size:11px;padding:1px 6px;border-radius:4px;border:1px solid var(--line);color:var(--muted);margin-left:6px}
-.alert{border:1px solid #f3c5c6;background:#fff5f5;color:#8a1c1f;border-radius:12px;padding:16px 20px;margin-top:24px}
-.alert.info{border-color:var(--line);background:var(--soft);color:var(--fg)}
-.alert b{display:block;margin-bottom:4px}
-.lists{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
-.lists h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;font-weight:500}
-.lists li{margin-left:16px;font-size:13px;margin-bottom:4px}
-.ask{display:flex;gap:8px}.ask input{flex:1;font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:8px;outline:none}.ask input:focus{border-color:var(--fg)}
-.ans{margin-top:12px;font-size:13px;white-space:pre-wrap}
-table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px 20px;border-top:1px solid var(--line);font-size:13px}
-th{font-weight:500;color:var(--muted);border-top:0;font-size:12px}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
-.kpi b{font-size:28px;font-weight:600;letter-spacing:-.04em;display:block}
-.spin{display:inline-block;width:12px;height:12px;border:2px solid var(--line);border-top-color:var(--fg);border-radius:50%;animation:s .7s linear infinite;vertical-align:-2px;margin-right:6px}
-@keyframes s{to{transform:rotate(360deg)}}
-.hide{display:none}
-@media(max-width:860px){.grid,.lists,.kpis{grid-template-columns:1fr}.tabs{margin-left:0}.today{flex-direction:column}.count{text-align:left}}
-
-body{background:#fafafa}
-header{background:rgba(250,250,250,.8)}
-.card{box-shadow:0 1px 2px rgba(10,10,10,.04),0 8px 24px -12px rgba(10,10,10,.08)}
-.hero{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:28px;border-radius:16px;background:var(--fg);color:#fafafa;margin-top:24px}
-.hero .k{color:#a1a1a1}.hero .t{font-size:28px;font-weight:600;letter-spacing:-.03em;margin:8px 0 6px}
-.hero .sub{color:#c7c7c7;max-width:62ch}
-.hero .chips{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-.chip{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid #333;color:#e5e5e5;display:inline-flex;gap:6px;align-items:center}
-.ring{position:relative;width:132px;height:132px}.ring svg{transform:rotate(-90deg)}
-.ring .c{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
-.ring .c b{font-size:34px;font-weight:600;letter-spacing:-.04em;line-height:1}.ring .c span{font-size:11px;color:#a1a1a1}
-.map{display:flex;align-items:flex-start;overflow-x:auto;padding:20px 20px 24px;gap:0;scroll-snap-type:x mandatory}
-.node{flex:0 0 120px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;cursor:pointer;scroll-snap-align:start}
-.node:not(:last-child)::after{content:"";position:absolute;top:17px;left:calc(50% + 20px);width:calc(100% - 40px);height:1px;background:var(--line)}
-.node.done:not(:last-child)::after{background:var(--fg)}
-.node .b{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:16px;transition:transform .2s cubic-bezier(.16,1,.3,1)}
-.node:hover .b{transform:scale(1.08)}
-.node.done .b{background:var(--fg);color:#fff;border-color:var(--fg)}
-.node.next .b{border:2px solid var(--fg);box-shadow:0 0 0 4px rgba(10,10,10,.06)}
-.node.at_risk .b{border-color:var(--red);color:var(--red);background:#fff5f5}
-.node.blocked .b{color:#b3b3b3;border-style:dashed}
-.node .n{font-size:12px;margin-top:8px;line-height:1.3;max-width:104px}
-.node .d{font-size:11px;color:var(--muted);margin-top:2px}
-.node.sel .n{font-weight:600}
-.skel{background:linear-gradient(90deg,#f0f0f0,#f7f7f7,#f0f0f0);background-size:200% 100%;border-radius:6px;animation:sh 1.2s infinite;height:14px}
-@keyframes sh{to{background-position:-200% 0}}
-.btn{display:inline-flex;align-items:center;gap:8px}.btn:active{transform:translateY(1px)}
-.btn.inv{background:#fafafa;color:var(--fg);border-color:#fafafa}.btn.inv-ghost{background:transparent;color:#fafafa;border-color:#3a3a3a}.btn.inv-ghost:hover{border-color:#fafafa;opacity:1}
-.fade{animation:fd .5s cubic-bezier(.16,1,.3,1) both}@keyframes fd{from{opacity:0;transform:translateY(8px)}}
-@media(prefers-reduced-motion:reduce){.fade,.skel{animation:none}}
-@media(max-width:860px){.hero{grid-template-columns:1fr}}
-
-.shell{display:grid;grid-template-columns:minmax(0,1fr) 400px;min-height:calc(100dvh - 57px)}
-.shell main{max-width:none;margin:0;padding:32px 32px 80px}
-.chat{position:sticky;top:57px;height:calc(100dvh - 57px);border-left:1px solid var(--line);background:#fff;display:flex;flex-direction:column}
-.chat .hd{padding:18px 20px;border-bottom:1px solid var(--line)}
-.chat .hd b{display:flex;align-items:center;gap:8px}
+.tg{font-size:11px;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-left:6px}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:14px 24px;border-top:1px solid var(--line);font-size:13px}th{font-weight:500;color:var(--muted);border-top:0;font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px 0}
+.kpi b{font-size:32px;font-weight:600;letter-spacing:-.04em;display:block;margin-top:4px}
+.chat{position:sticky;top:61px;height:calc(100dvh - 61px);border-left:1px solid var(--line);background:#0e0e0e;display:flex;flex-direction:column}
+.chat .hd{padding:20px;border-bottom:1px solid var(--line)}
+.chat .hd b{display:flex;align-items:center;gap:8px;font-size:15px}
 .msgs{flex:1;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
-.m{max-width:92%;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.5;white-space:pre-wrap}
-.m.u{align-self:flex-end;background:var(--fg);color:#fafafa;border-bottom-right-radius:4px}
-.m.a{align-self:flex-start;background:var(--soft);border:1px solid var(--line);border-bottom-left-radius:4px}
-.m.a .src{display:block;margin-top:8px;font-size:11px;color:var(--muted)}
-.m.a .src a{color:inherit}
+.m{max-width:92%;padding:11px 14px;border-radius:14px;font-size:13px;white-space:pre-wrap}
+.m.u{align-self:flex-end;background:var(--fg);color:#0b0b0b;border-bottom-right-radius:4px}
+.m.a{align-self:flex-start;background:var(--card2);border:1px solid var(--line);border-bottom-left-radius:4px}
+.m .src{display:block;margin-top:8px;font-size:11px;color:var(--muted)}
 .sugg{display:flex;flex-direction:column;gap:8px}
-.sugg button{text-align:left;font:inherit;font-size:13px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;transition:border-color .15s}
+.sugg button{text-align:left;font:inherit;font-size:13px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--fg);cursor:pointer}
 .sugg button:hover{border-color:var(--fg)}
 .chat form{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line)}
-.chat input{flex:1;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;outline:none}.chat input:focus{border-color:var(--fg)}
-@media(max-width:1100px){.shell{grid-template-columns:1fr}.chat{position:static;height:auto;min-height:560px;border-left:0;border-top:1px solid var(--line)}}
+.chat input{flex:1;font:inherit;padding:11px 14px;border:1px solid var(--line);border-radius:999px;outline:none;background:var(--card);color:var(--fg)}.chat input:focus{border-color:var(--fg)}
+.spin{display:inline-block;width:12px;height:12px;border:2px solid var(--line);border-top-color:var(--fg);border-radius:50%;animation:s .7s linear infinite;vertical-align:-2px;margin-right:8px}
+@keyframes s{to{transform:rotate(360deg)}}
+.fade{animation:fd .5s cubic-bezier(.16,1,.3,1) both}@keyframes fd{from{opacity:0;transform:translateY(8px)}}
+@media(prefers-reduced-motion:reduce){.fade,.spin{animation:none}}
+.hide{display:none}
+@media(max-width:1200px){.shell{grid-template-columns:1fr}.chat{position:static;height:auto;min-height:520px;border-left:0;border-top:1px solid var(--line)}}
+@media(max-width:860px){.top,.journey,.kpis{grid-template-columns:1fr}.hero h1{font-size:30px}.detail{position:static}}
 </style>
-<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 </head>
 <body>
 <header><div class="bar">
@@ -131,78 +110,78 @@ header{background:rgba(250,250,250,.8)}
 </div></header>
 
 <div class="shell"><main>
-<!-- EMPLOYEE -->
 <section id="v-emp">
-  <div><h1 id="who">Ana Torres</h1><p class="sub" id="whosub">Software engineer, Quito to Paris. Starts at Northwind Consulting on 12 Nov 2026.</p></div>
-  <div class="hero fade">
-    <div>
-      <div class="k">Today, your next best action</div>
-      <div class="t" id="nba"><span class="skel" style="display:block;width:340px;height:28px;background-color:#222"></span></div>
-      <div class="sub" id="nbawhy"></div>
-      <div class="chips" id="chips"></div>
-      <div class="row" style="margin-top:20px">
-        <button class="btn inv" id="b-delay"><i class="ph ph-clock-countdown"></i>Appointment delayed 2 weeks</button>
-        <button class="btn inv-ghost" id="b-rule"><i class="ph ph-scroll"></i>Official rule changed</button>
-      </div>
-    </div>
-    <div class="ring"><svg width="132" height="132"><circle cx="66" cy="66" r="58" stroke="#2a2a2a" stroke-width="8" fill="none"/><circle id="arc" cx="66" cy="66" r="58" stroke="#fafafa" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="364.4" stroke-dashoffset="364.4" style="transition:stroke-dashoffset .9s cubic-bezier(.16,1,.3,1),stroke .3s"/></svg>
-      <div class="c"><div><b id="days">–</b><br><span>days to start</span><br><span id="status">–</span></div></div></div>
-  </div>
   <div id="busy" class="alert info hide"></div>
   <div id="cause" class="alert hide"></div>
-
-  <div class="grid">
-    <div>
-      <div class="card pad" id="planbox">
-        <h2>Your plan</h2>
-        <div class="lists">
-          <div><h3>This week</h3><ul id="l-week"><li class="meta">Run a re-plan to generate</li></ul></div>
-          <div><h3>Before you start</h3><ul id="l-before"></ul></div>
-          <div><h3>Day-7 proof</h3><ul id="l-proof"></ul></div>
+  <div class="top">
+    <div class="hero fade">
+      <div class="row1"><span class="meta" id="today">Today</span><span class="tag">Orchestrator pick</span></div>
+      <h1 id="nba">Loading your plan…</h1>
+      <div><button class="btn dark" id="b-go">Open step <i class="ph ph-arrow-right"></i></button></div>
+      <div class="week"><div class="k">This week</div><ul id="week"><li><span class="meta">Planner is preparing your week…</span></li></ul></div>
+    </div>
+    <div class="side">
+      <div class="card pad fade">
+        <div style="font-weight:600;margin-bottom:16px" id="cdtitle">Countdown</div>
+        <div class="count">
+          <div class="ring"><svg width="120" height="120"><circle cx="60" cy="60" r="52" stroke="#2a2a2a" stroke-width="10" fill="none"/><circle id="arc" cx="60" cy="60" r="52" stroke="#ededed" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="transition:stroke-dashoffset .9s cubic-bezier(.16,1,.3,1),stroke .3s"/></svg></div>
+          <div><div><span class="big" id="days">–</span> <span class="meta">days left</span></div><div id="ready" style="margin-top:6px">–</div><div id="atrisk" class="risk" style="margin-top:4px"></div></div>
         </div>
       </div>
-      <div class="card" style="margin-top:16px">
-        <div class="pad" style="padding-bottom:0"><h2 style="margin:0">Journey</h2><p class="meta">Dependencies flow left to right. Click a step to see why, with its official source.</p></div>
-        <div class="map" id="map"></div>
-        <ul class="steps" id="steps"></ul>
-      </div>
-    </div>
-    <div>
-      <div class="card pad why" id="why"><h2>Why this step</h2><p class="meta">Select a step.</p></div>
-      <div class="card" style="margin-top:16px">
-        <div class="pad" style="padding-bottom:8px"><h2 style="margin:0">Agent activity</h2><p class="meta">Every run is logged with its sources.</p></div>
-        <ul class="feed" id="feed"></ul>
+      <div class="card pad fade">
+        <i class="ph ph-bell" style="font-size:20px"></i>
+        <div class="meta" style="margin-top:10px">Next reminder</div>
+        <div style="font-size:20px;font-weight:600">Today 18:00</div>
+        <div class="meta">via Telegram (prototype)</div>
+        <div id="reminder" style="margin-top:10px;font-size:13px;color:#bdbdbd"></div>
       </div>
     </div>
   </div>
+
+  <div class="card pad section">
+    <div class="jhead"><h2>Your journey</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn ghost" id="b-delay"><i class="ph ph-lightning"></i>Simulate: appointment delayed 2 weeks</button>
+        <button class="btn ghost" id="b-rule"><i class="ph ph-scroll"></i>Simulate: official rule changed</button>
+      </div>
+    </div>
+    <div class="journey">
+      <ul class="steps" id="steps"></ul>
+      <div class="detail" id="detail"><span class="meta">Select a step.</span></div>
+    </div>
+  </div>
+
+  <div class="card section">
+    <div class="pad" style="padding-bottom:12px"><h2>Agent activity</h2><div class="meta">Every agent run is logged with its sources.</div></div>
+    <ul class="feed" id="feed"></ul>
+  </div>
 </section>
 
-<!-- MANAGER -->
 <section id="v-mgr" class="hide">
-  <h1>Mobility team</h1><p class="sub">Northwind Consulting · Paris relocations</p>
+  <h2 style="font-size:28px">Mobility team</h2><div class="meta">Northwind Consulting, Paris relocations</div>
   <div class="kpis" id="kpis"></div>
-  <div class="card" style="margin-top:24px"><table><thead><tr><th>Employee</th><th>Route</th><th>Start</th><th>Progress</th><th>At risk</th><th>Status</th><th></th></tr></thead><tbody id="cases"></tbody></table></div>
-  <div class="card" style="margin-top:24px"><div class="pad" style="padding-bottom:8px"><h2 style="margin:0">Needs human review</h2><p class="meta">Conflicting sources and low-confidence rules, routed by the Resolver.</p></div><ul class="feed" id="review"></ul></div>
+  <div class="card"><table><thead><tr><th>Employee</th><th>Route</th><th>Start</th><th>Progress</th><th>At risk</th><th>Status</th><th></th></tr></thead><tbody id="cases"></tbody></table></div>
+  <div class="card section"><div class="pad" style="padding-bottom:12px"><h2>Needs human review</h2><div class="meta">Conflicting sources and low-confidence rules, routed by the Resolver.</div></div><ul class="feed" id="review"></ul></div>
 </section>
 
-<!-- EVIDENCE -->
 <section id="v-ev" class="hide">
-  <h1>Evidence</h1><p class="sub">Same model, same 20 hard relocation questions. Model alone vs grounded in EUntangled's verified corpus. Recorded run, 22 Oct 2026.</p>
+  <h2 style="font-size:28px">Evidence</h2><div class="meta" style="max-width:70ch">Same model, same 20 hard relocation questions. Model alone vs grounded in EUntangled's verified corpus. Recorded run, 22 Oct 2026.</div>
   <div class="kpis">
-    <div class="card pad kpi"><span class="meta">Accuracy · model alone</span><b>45%</b></div>
-    <div class="card pad kpi"><span class="meta">Accuracy · EUntangled</span><b>75%</b></div>
+    <div class="card pad kpi"><span class="meta">Correct · model alone</span><b>45%</b></div>
+    <div class="card pad kpi"><span class="meta">Correct · EUntangled</span><b>75%</b></div>
     <div class="card pad kpi"><span class="meta">Working official source · alone</span><b>50%</b></div>
     <div class="card pad kpi"><span class="meta">Working official source · EUntangled</span><b>95%</b></div>
   </div>
-  <div class="card" style="margin-top:24px"><table><thead><tr><th>Category</th><th>Correct · alone</th><th>Correct · EUntangled</th><th>Source · alone</th><th>Source · EUntangled</th></tr></thead><tbody>
+  <div class="card"><table><thead><tr><th>Category</th><th>Correct · alone</th><th>Correct · EUntangled</th><th>Source · alone</th><th>Source · EUntangled</th></tr></thead><tbody>
     <tr><td>Housing</td><td>1 / 5</td><td><b>5 / 5</b></td><td>1 / 5</td><td><b>5 / 5</b></td></tr>
     <tr><td>Bank</td><td>3 / 5</td><td><b>5 / 5</b></td><td>2 / 5</td><td>4 / 5</td></tr>
     <tr><td>Visa &amp; permits</td><td>3 / 5</td><td>3 / 5</td><td>3 / 5</td><td><b>5 / 5</b></td></tr>
     <tr><td>Health &amp; social security</td><td>2 / 5</td><td>2 / 5</td><td>4 / 5</td><td><b>5 / 5</b></td></tr>
   </tbody></table></div>
-  <p class="meta" style="margin-top:12px">References generated from verified quotes in the corpus, graded by an LLM judge; link checks are live HTTP requests. Small sample, indicative. Tax, phone and transport not yet covered by the corpus.</p>
+  <p class="meta" style="margin-top:12px">Correct = matches the official text. Working source = at least one cited official link that opens. References from verified corpus quotes, graded by an LLM judge. Small sample, indicative.</p>
 </section>
 </main>
+
 <aside class="chat">
   <div class="hd"><b><i class="ph ph-chats-circle"></i>EUgene AI</b><span class="meta">Answers from verified official sources for Ana's case. Every answer is cited.</span></div>
   <div class="msgs" id="msgs">
@@ -216,17 +195,18 @@ header{background:rgba(250,250,250,.8)}
       <button>How much can the bank charge me for overdrafts on a basic account?</button>
     </div>
   </div>
-  <form id="chatf"><input id="chatq" placeholder="Ask about your relocation…" autocomplete="off"><button class="btn" type="submit"><i class="ph ph-paper-plane-tilt"></i></button></form>
+  <form id="chatf"><input id="chatq" placeholder="Ask EUgene about your relocation…" autocomplete="off"><button class="btn" type="submit"><i class="ph ph-paper-plane-tilt"></i></button></form>
 </aside></div>
 
 <script>
-const API = (new URLSearchParams(location.search).get("api") || localStorage.getItem("eu_api") || "http://localhost:8000").replace(/\/$/, "");
+const API = (new URLSearchParams(location.search).get("api") || "http://localhost:8000").replace(/\/$/, "");
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u || ""; } };
 const day = (d) => d ? new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short" }) : "";
 const LABEL = { done: "Done", next: "Next", in_progress: "In progress", blocked: "Blocked", at_risk: "At risk" };
-let CID = null, PLAN = null, SEL = null;
+const ICON = { done: "ph-check", next: "ph-arrow-right", in_progress: "ph-circle-half", at_risk: "ph-warning", blocked: "ph-lock-simple" };
+let CID = null, SEL = null, STEPS = [];
 
 async function call(path, body) {
   const r = await fetch(API + path, body ? { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) } : {});
@@ -241,70 +221,87 @@ document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   if (t.dataset.v === "mgr") loadCases();
 });
 
+function weekItem(s) {
+  const m = String(s).match(/^([A-Z][a-z]{2} \d{1,2} [A-Z][a-z]{2})[:,]?\s*(.*)$/);
+  let txt = m ? m[2] : s, when = m ? m[1] : "";
+  txt = txt.split(/[.;(]/)[0].trim();
+  if (txt.length > 64) txt = txt.slice(0, 62).replace(/\s\S*$/, "") + "…";
+  return `<li><span>${esc(txt)}</span><span>${esc(when)}</span></li>`;
+}
+
 async function load() {
   const d = await call(`/cases/${CID}/plan`);
-  PLAN = d;
-  const c = d.case;
+  const c = d.case; STEPS = d.steps;
   const days = Math.ceil((new Date(c.start_date) - new Date()) / 864e5);
+  const done = STEPS.filter(s => s.status === "done").length, risk = STEPS.filter(s => s.status === "at_risk").length;
+  $("today").textContent = "Today · " + new Date().toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+  $("cdtitle").textContent = "Countdown to " + day(c.start_date);
   $("days").textContent = days;
-  $("status").textContent = c.status.replace("_", " ");
-  $("status").style.color = c.status === "on_track" ? "" : "var(--red)";
-  const done = d.steps.filter(s => s.status === "done").length, risk = d.steps.filter(s => s.status === "at_risk").length;
-  const arc = $("arc"); arc.style.strokeDashoffset = 364.4 * (1 - done / d.steps.length); arc.style.stroke = c.status === "on_track" ? "#fafafa" : "var(--amber)";
-  $("chips").innerHTML = `<span class="chip"><i class="ph ph-check-circle"></i>${done} of ${d.steps.length} done</span>` +
-    (risk ? `<span class="chip" style="border-color:#5a1f21;color:#ff9a9d"><i class="ph ph-warning"></i>${risk} at risk</span>` : "") +
-    `<span class="chip"><i class="ph ph-seal-check"></i>${d.steps.filter(s => s.rule).length} steps backed by official sources</span>`;
-  const ICON = { done: "ph-check", next: "ph-arrow-right", in_progress: "ph-circle-half", at_risk: "ph-warning", blocked: "ph-lock-simple" };
-  $("map").innerHTML = d.steps.map((s, i) => `<div class="node ${s.status} ${SEL === i ? "sel" : ""}" data-i="${i}"><div class="b"><i class="ph ${ICON[s.status] || "ph-circle"}"></i></div><div class="n">${esc(s.title)}</div><div class="d">${s.due_date ? day(s.due_date) : ""}</div></div>`).join("");
-  document.querySelectorAll(".node").forEach(el => el.onclick = () => { SEL = +el.dataset.i; why(d.steps[SEL]); load(); });
-  const p = d.latest_plan;
-  const n = d.next_best_action || p?.next_best_action;
-  $("nba").textContent = n ? n.title : (d.steps.find(s => s.status === "next")?.title || "—");
-  $("nbawhy").textContent = n ? `Unblocks ${n.unblocks} step${n.unblocks === 1 ? "" : "s"}. ${(n.why || "").split(". ").slice(0, 2).join(". ")}` : "";
-  const li = (a) => (a && a.length ? a.map(x => `<li>${esc(x)}</li>`).join("") : `<li class="meta">—</li>`);
-  if (p) { $("l-week").innerHTML = li(p.this_week); $("l-before").innerHTML = li(p.before_start); $("l-proof").innerHTML = li(p.day7_proof); }
-  $("steps").innerHTML = d.steps.map((s, i) => `
-    <li class="step ${s.status} ${SEL === i ? "sel" : ""}" data-i="${i}">
-      <span class="ix">${s.status === "done" ? "✓" : s.position}</span>
-      <div><div>${esc(s.title)}</div><div class="meta">${s.due_date ? "Due " + day(s.due_date) : ""}${s.rule ? " · " + host(s.rule.source_url) : " · no verified source yet"}</div></div>
-      <span class="st ${s.status === "at_risk" ? "risk" : s.status === "next" ? "next" : s.status === "done" ? "done" : ""}">${LABEL[s.status] || s.status}</span>
-    </li>`).join("");
-  document.querySelectorAll(".step").forEach(el => el.onclick = () => { SEL = +el.dataset.i; why(d.steps[SEL]); load(); });
-  if (SEL == null) { const i = d.steps.findIndex(s => s.status === "next"); if (i >= 0) { SEL = i; why(d.steps[i]); } }
-  $("feed").innerHTML = d.activity.slice(0, 14).map(r => `
-    <li><span class="ag">${esc(r.agent[0].toUpperCase() + r.agent.slice(1))}</span><span class="tag">${r.mode}</span><span class="meta" style="float:right">${new Date(r.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}</span>
-    <div>${esc(r.action.length > 220 ? r.action.slice(0, 220) + "…" : r.action)}</div>
+  $("ready").textContent = Math.round(done / STEPS.length * 100) + "% ready";
+  $("atrisk").textContent = risk ? `${risk} step${risk > 1 ? "s" : ""} at risk` : "";
+  $("arc").style.strokeDashoffset = 326.7 * (1 - done / STEPS.length);
+  $("arc").style.stroke = risk || c.status !== "on_track" ? "var(--amber)" : "#ededed";
+  const p = d.latest_plan, n = d.next_best_action || p?.next_best_action;
+  const target = n ? STEPS.find(s => s.position === n.step_position) : STEPS.find(s => s.status === "next");
+  const mins = target?.est_minutes;
+  $("nba").innerHTML = `${esc((n?.title || target?.title || "").replace(/\.$/, ""))}.<br><span>${mins ? mins + " min. " : ""}Unblocks ${n?.unblocks ?? 0} step${n?.unblocks === 1 ? "" : "s"}.</span>`;
+  $("b-go").onclick = () => { if (target) { SEL = STEPS.indexOf(target); render(); $("detail").scrollIntoView({ behavior: "smooth", block: "center" }); } };
+  if (p?.this_week?.length) $("week").innerHTML = p.this_week.slice(0, 4).map(weekItem).join("");
+  if (p?.reminder) $("reminder").textContent = "“" + p.reminder + "”";
+  if (SEL == null) SEL = Math.max(0, STEPS.findIndex(s => s.status === "next" || s.status === "at_risk"));
+  render();
+  $("feed").innerHTML = d.activity.slice(0, 8).map(r => `
+    <li><span class="ag">${esc(r.agent[0].toUpperCase() + r.agent.slice(1))}</span><span class="tg">${r.mode}</span><span class="meta" style="float:right">${new Date(r.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}</span>
+    <div style="margin-top:4px;color:#cfcfcf">${esc(r.action.length > 200 ? r.action.slice(0, 200) + "…" : r.action)}</div>
     ${r.metrics?.verifier_pass_rate != null ? `<div class="meta mono">verifier pass rate ${r.metrics.verifier_pass_rate}</div>` : ""}
     ${(r.sources || []).length ? `<div class="meta">${[...new Set(r.sources.map(host))].join(" · ")}</div>` : ""}</li>`).join("");
 }
 
-function why(s) {
+function render() {
+  $("steps").innerHTML = STEPS.map((s, i) => `
+    <li class="step ${s.status} ${SEL === i ? "sel" : ""}" data-i="${i}">
+      <span class="ic"><i class="ph ${ICON[s.status] || "ph-circle"}"></i></span>
+      <div><div class="t">${esc(s.title)}<span class="st ${s.status}">${LABEL[s.status] || s.status}</span></div>
+      <div class="s">${s.est_minutes ? s.est_minutes + " min · " : ""}${s.due_date ? "due " + day(s.due_date) : ""}</div></div>
+    </li>`).join("");
+  document.querySelectorAll(".step").forEach(el => el.onclick = () => { SEL = +el.dataset.i; render(); });
+  detail(STEPS[SEL]);
+}
+
+function detail(s) {
+  if (!s) return;
   const r = s.rule;
-  if (!r) { $("why").innerHTML = `<h2>Why this step</h2><p><b>${esc(s.title)}</b></p><div class="alert" style="margin-top:12px"><b>No verified official source yet</b>Confirm with a specialist. EUntangled never invents a rule.</div>`; return; }
+  let h = `<div class="h">Step ${s.position}<span class="st ${s.status}" style="margin:0">${LABEL[s.status]}</span><span style="text-transform:none;letter-spacing:0">${s.est_minutes ? s.est_minutes + " min · " : ""}${s.due_date ? "due " + day(s.due_date) : ""}</span></div><h3>${esc(s.title)}</h3>`;
+  if (!r) { $("detail").innerHTML = h + `<div class="box"><b><i class="ph ph-warning-circle"></i>No verified official source yet</b><span class="meta">EUntangled never invents a rule. Confirm this step with a specialist.</span></div>`; return; }
   const fresh = r.freshness === "fresh" ? "Fresh" : r.freshness === "stale" ? "Stale" : "Unverified";
-  const reqs = (r.requirements || []).slice(0, 4).map(q => `<li style="margin-left:16px">${esc(q.document || q.condition || "")}${q.deadline ? " · " + esc(q.deadline) : ""}${q.fee ? " · " + esc(q.fee) : ""}</li>`).join("");
+  const reqs = (r.requirements || []).slice(0, 4).map(q => `<li style="margin-left:18px;margin-top:4px">${esc(q.document || q.condition || "")}${q.deadline ? " · " + esc(q.deadline) : ""}${q.fee ? " · " + esc(q.fee) : ""}</li>`).join("");
   const quote = r.requirements?.[0]?.quote;
-  $("why").innerHTML = `<h2>Why this step</h2><p><b>${esc(s.title)}</b></p>
-    <dl><dt>Rule</dt><dd>${esc(r.summary || r.title)}</dd>
-    ${reqs ? `<dt>Requirements</dt><dd><ul>${reqs}</ul></dd>` : ""}
-    ${quote ? `<dt>Official text</dt><dd class="mono" style="font-size:12px">“${esc(quote)}”</dd>` : ""}
-    <dt>Source</dt><dd><a href="${esc(r.source_url)}" target="_blank">${esc(r.source_url)}</a></dd>
-    <dt>Authority · verified · confidence</dt><dd>Tier ${r.source_tier} official · ${day(r.last_verified)} · ${Math.round((r.confidence || 0) * 100)}% <span class="tag">${fresh}</span>${r.status === "conflicting" ? '<span class="tag" style="color:var(--red)">Conflicting</span>' : ""}</dd></dl>`;
+  h += `<div style="color:#cfcfcf">${esc(r.summary || r.title)}</div>`;
+  if (reqs) h += `<div class="box"><b><i class="ph ph-list-checks"></i>What you need</b><ul>${reqs}</ul></div>`;
+  if (quote) h += `<div class="box"><b><i class="ph ph-quotes"></i>Official text</b><div class="quote">“${esc(quote)}”</div></div>`;
+  h += `<div class="box"><b><i class="ph ph-seal-check"></i>Why you can trust this</b><div class="kv">
+    <span>Source</span><span><a href="${esc(r.source_url)}" target="_blank">${esc(host(r.source_url))}</a></span>
+    <span>Authority</span><span>Tier ${r.source_tier} · official</span>
+    <span>Last verified</span><span>${day(r.last_verified)} <span class="tg">${fresh}</span></span>
+    <span>Confidence</span><span>${Math.round((r.confidence || 0) * 100)}%</span>
+    <span>Produced by</span><span>Extractor + Verifier</span></div></div>`;
+  $("detail").innerHTML = h;
 }
 
 function showCause(r, title) {
   if (!r) return;
   $("cause").classList.remove("hide");
-  $("cause").innerHTML = `<b>${esc(title)}</b>${esc(r.explanation || "")}${r.reminder ? `<div style="margin-top:8px" class="mono">→ Reminder sent to Ana: ${esc(r.reminder)}</div>` : ""}`;
+  $("cause").innerHTML = `<b>${esc(title)}</b>${esc(r.explanation || "")}`;
 }
 
 $("b-delay").onclick = async () => {
   busy("Orchestrator routing the delay → Planner shifting dependent steps…");
-  try { const r = await call(`/cases/${CID}/delay`, { rule_key: "residence_permit", days: 14 }); await load(); showCause(r.results?.[0], "Re-planned: prefecture appointment delayed 14 days"); }
+  try { const r = await call(`/cases/${CID}/delay`, { rule_key: "residence_permit", days: 14 }); await load(); showCause(r.results?.[0], "Re-planned: prefecture appointment delayed 14 days"); window.scrollTo({ top: 0, behavior: "smooth" }); }
   catch (e) { alert(e.message); } finally { busy(""); }
 };
 $("b-rule").onclick = async () => {
   busy("Watcher: source hash changed → Extractor → Verifier → Resolver → rule.changed → Planner…");
+  window.scrollTo({ top: 0, behavior: "smooth" });
   const src = "https://www.service-public.fr/particuliers/vosdroits/F33453";
   try {
     let r;
@@ -312,21 +309,22 @@ $("b-rule").onclick = async () => {
     catch { r = await call("/simulate/rule-change", { source_url: src, find: "moins de 26 ans", replace: "moins de 30 ans" }); }
     await load();
     const i = r.ingest || {};
-    showCause(r.replans?.[0], `Official rule changed · Visale (service-public.fr) · verifier ${i.passed}/${i.checked} · ${r.replans?.length || 0} case re-planned · simulated edit, live pipeline`);
+    showCause(r.replans?.[0], `Official rule changed · Visale (service-public.fr) · verifier ${i.passed}/${i.checked} · ${r.replans?.length || 0} cases re-planned · simulated edit, live pipeline`);
   } catch (e) { alert(e.message); } finally { busy(""); }
 };
+
 function addMsg(cls, html) { const d = document.createElement("div"); d.className = "m " + cls; d.innerHTML = html; $("msgs").appendChild(d); $("msgs").scrollTop = 1e9; return d; }
 async function askQ(q) {
   if (!q.trim() || !CID) return;
   const sg = $("sugg"); if (sg) sg.remove();
   addMsg("u", esc(q));
-  const t = addMsg("a", `<span class="spin"></span>Retrieval searching verified rules for your case…`);
+  const t = addMsg("a", `<span class="spin"></span>EUgene is searching verified rules for your case…`);
   try {
     const r = await call(`/cases/${CID}/ask`, { question: q });
     const src = [...new Map((r.citations || []).map(c => [c.source_url, c])).values()];
     t.innerHTML = esc(r.answer) + src.map(c => `<span class="src"><i class="ph ph-seal-check"></i> <a href="${esc(c.source_url)}" target="_blank">${esc(host(c.source_url))}</a> · verified ${esc((c.last_verified || "").slice(0, 10))}</span>`).join("");
     load();
-  } catch (e) { t.textContent = "Could not reach the agent: " + e.message; }
+  } catch (e) { t.textContent = "Could not reach EUgene: " + e.message; }
 }
 document.querySelectorAll("#sugg button").forEach(b => b.onclick = () => askQ(b.textContent));
 $("chatf").onsubmit = (e) => { e.preventDefault(); const q = $("chatq").value; $("chatq").value = ""; askQ(q); };
@@ -334,24 +332,23 @@ $("chatf").onsubmit = (e) => { e.preventDefault(); const q = $("chatq").value; $
 async function loadCases() {
   const d = await call("/cases");
   const rows = d.cases;
-  $("kpis").innerHTML = [["Active cases", rows.length], ["At risk", rows.filter(c => c.status !== "on_track").length], ["Steps at risk", rows.reduce((a, c) => a + c.steps_at_risk, 0)], ["Needs review", d.review_queue.length]]
+  $("kpis").innerHTML = [["Active cases", rows.length], ["At risk or blocked", rows.filter(c => c.status !== "on_track").length], ["Steps at risk", rows.reduce((a, c) => a + c.steps_at_risk, 0)], ["Needs review", d.review_queue.length]]
     .map(([k, v]) => `<div class="card pad kpi"><span class="meta">${k}</span><b>${v}</b></div>`).join("");
   $("cases").innerHTML = rows.map(c => `<tr><td><b>${esc(c.employee_name)}</b><div class="meta">${esc(c.origin_country)} → ${esc(c.city)}</div></td><td>${esc(c.permit_type)} · ${esc(c.nationality_group)}</td><td>${day(c.start_date)}</td>
-    <td>${c.steps_done} / ${c.steps_total}</td><td>${c.steps_at_risk ? `<span style="color:var(--red)">${c.steps_at_risk}</span>` : "0"}</td>
-    <td><span class="st ${c.status === "on_track" ? "" : "risk"}">${c.status.replace("_", " ")}</span></td><td><button class="btn ghost" onclick="this.textContent='Nudged ✓'">Nudge</button></td></tr>`).join("");
-  $("review").innerHTML = d.review_queue.length ? d.review_queue.map(r => `<li><b>${esc(r.rule_key)}</b><span class="tag">${esc(r.reason)}</span><div class="meta">${esc(JSON.stringify(r.details).slice(0, 200))}</div></li>`).join("") : `<li class="meta">Nothing to review. All active rules verified against tier-1 sources.</li>`;
+    <td>${c.steps_done} / ${c.steps_total}</td><td>${c.steps_at_risk ? `<span class="risk">${c.steps_at_risk}</span>` : "0"}</td>
+    <td><span class="st ${c.status === "on_track" ? "done" : "at_risk"}" style="margin:0">${c.status.replace("_", " ")}</span></td><td><button class="btn ghost" style="padding:6px 12px" onclick="this.textContent='Nudged'">Nudge</button></td></tr>`).join("");
+  $("review").innerHTML = d.review_queue.length ? d.review_queue.map(r => `<li><b>${esc(r.rule_key)}</b><span class="tg">${esc(r.reason)}</span><div class="meta">${esc(r.details?.note || JSON.stringify(r.details).slice(0, 180))}</div></li>`).join("") : `<li class="meta">Nothing to review.</li>`;
 }
 
 (async () => {
   try {
     const d = await call("/cases");
     CID = (d.cases.find(c => c.employee_name === "Ana Torres") || d.cases[0]).id;
-    $("conn").innerHTML = `<span class="dot live"></span>live · ${host(API) || API}`;
+    $("conn").innerHTML = `<span class="dot live"></span>live`;
     await load();
   } catch (e) {
     $("conn").innerHTML = `<span class="dot off"></span>API offline`;
-    $("nba").textContent = "Backend not reachable";
-    $("nbawhy").textContent = `Start the API (uvicorn backend.main:app) or open with ?api=<url>. Tried ${API}.`;
+    $("nba").innerHTML = "Backend not reachable.<br><span>Start the API on :8000.</span>";
   }
 })();
 </script>
