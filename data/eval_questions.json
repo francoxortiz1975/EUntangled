@@ -1,0 +1,107 @@
+[
+  {
+    "question": "I'm a non-EU citizen moving to Paris for a salaried job. Do my accompanying family members who are also non-EU nationals need their own residence permits if I'm an EEA or Swiss citizen?",
+    "reference_answer": "Yes. Even if you are an EEA or Swiss citizen and don't have to hold a residence permit yourself, family members who accompany you and have a nationality other than an EEA or Swiss one must hold a card, such as the 'Membre de la famille d'un citoyen de l'Union/EEE/Suisse' card or a permanent residence card.",
+    "rule_key": "eu_citizen_residence_exemption",
+    "source_url": "https://www.service-public.fr/particuliers/vosdroits/F39",
+    "quote": "Les\nmembres de votre famille qui vous accompagnent\net qui sont de nationalité étrangère autre que celle d'un pays de l'EEE ou suisse doivent détenir l'une des cartes suivantes :"
+  },
+  {
+    "question": "Is opening a bank account in France under the right to an account free of charge?",
+    "reference_answer": "Yes. Opening a bank account under the right to an account and using basic banking services are free of charge.",
+    "rule_key": "bank_account",
+    "source_url": "https://www.service-public.fr/particuliers/actualites/A15560",
+    "quote": "L'ouverture d'un compte bancaire dans le cadre du droit au compte et l'utilisation des services bancaires de base sont gratuits."
+  },
+  {
+    "question": "If I open a bank account under the right to an account and make a transaction with insufficient funds, how much can the bank charge me in intervention commissions?",
+    "reference_answer": "Commissions are capped at 4 € per operation, up to a maximum of 20 € per month.",
+    "rule_key": "bank_account",
+    "source_url": "https://www.service-public.fr/particuliers/actualites/A15560",
+    "quote": "Pour les bénéficiaires du droit au compte, les commissions perçues sont plafonnées à 4 € par opération dans la limite de 20 € par mois."
+  },
+  {
+    "question": "How long must my family have lived with me in France before they are covered by French health insurance (Assurance Maladie)?",
+    "reference_answer": "If they have resided in France with you for more than 3 months, your family members are covered by the French Assurance Maladie.",
+    "rule_key": "family_health_coverage",
+    "source_url": "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france",
+    "quote": "S’ils résident en France avec vous depuis plus de 3 mois, les membres de votre famille sont pris en charge par l’Assurance Maladie française et bénéficient de"
+  },
+  {
+    "question": "If my bank account was opened under the right to an account, can the bank close it, and how must it inform me?",
+    "reference_answer": "The bank designated by the Banque de France can decide alone to close the account if one of the listed conditions is met. In that case it must send you its reasoned decision by post and inform the Banque de France.",
+    "rule_key": "bank_account_closure",
+    "source_url": "https://www.service-public.fr/particuliers/actualites/A15560",
+    "quote": "la banque doit vous adresser sa décision motivée par courrier et en informer la Banque de France."
+  },
+  {
+    "question": "How much notice does the bank have to give me before closing my right-to-an-account bank account?",
+    "reference_answer": "You get 2 months' notice, except where the account was deliberately used for illegal operations or inaccurate information was provided.",
+    "rule_key": "bank_account_closure",
+    "source_url": "https://www.service-public.fr/particuliers/actualites/A15560",
+    "quote": "Vous disposez d'un délai de 2 mois de préavis sauf dans les 2 cas suivants :"
+  },
+  {
+    "question": "I hold a Passeport Talent - salarié permit and live in Paris. Which health insurance office do I deal with for affiliation and reimbursements?",
+    "reference_answer": "You must go to the CPAM (caisse primaire d'assurance maladie) de Paris for all procedures: affiliation request, reimbursement of health costs, coverage for work accidents, etc.",
+    "rule_key": "cpam_paris_affiliation",
+    "source_url": "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france",
+    "quote": "vous devez vous adresser à la caisse primaire d’assurance maladie (CPAM) de Paris pour toutes vos démarches : demande d’affiliation, remboursement de frais de santé, prise en charge en cas d’accident de travail…"
+  },
+  {
+    "question": "If I keep living in another EU/EEA country while working in France, where do I request the S1 form?",
+    "reference_answer": "Request it from the CPAM of the location of your company's head office in France, then send it to the competent body in your state of residence.",
+    "rule_key": "s1_form",
+    "source_url": "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france",
+    "quote": "Demandez-le à la CPAM du lieu du siège social de votre entreprise en France envoyez-le à l’organisme compétent dans votre État de résidence."
+  },
+  {
+    "question": "How can I have my insurance, employment or residence periods in my home country taken into account in France?",
+    "reference_answer": "Ask your home country's health insurance fund for form S041, the 'Attestation concernant la totalisation des périodes d'assurance, d'emploi ou de résidence'.",
+    "rule_key": "s041_form",
+    "source_url": "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france",
+    "quote": "Pour cela, demandez à la caisse d’assurance maladie de votre pays d’origine le"
+  },
+  {
+    "question": "If I receive medical care in my home country and want to be reimbursed by French Assurance Maladie, what do I need to send?",
+    "reference_answer": "Send your paid invoices and proofs of payment, together with form S3125 'Soins reçus à l'étranger', to your health insurance fund in France.",
+    "rule_key": "reimbursement_care_abroad",
+    "source_url": "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france",
+    "quote": "Dans ce cas, adressez les factures payées et les justificatifs de paiement, accompagnés du\nformulaire S3125\nSoins reçus à l'étranger - déclaration à compléter par l'assuré (PDF)\n, à\nvotre caisse d'assurance maladie\nen France."
+  },
+  {
+    "question": "As an employee in France, do I need to prove a minimum amount of work activity to have my health costs reimbursed?",
+    "reference_answer": "No. Employees no longer have to justify a minimum activity.",
+    "rule_key": "social_security",
+    "source_url": "https://www.ameli.fr/assure/droits-demarches/vie-professionnelle-retraite/emploi-salarie/salarie",
+    "quote": "Les salariés n'ont plus à justifier d'une activité minimale."
+  },
+  {
+    "question": "From when am I covered by work accident and occupational disease insurance once I'm hired in France?",
+    "reference_answer": "You are covered from the moment you are hired, with no eligibility conditions to meet.",
+    "rule_key": "social_security",
+    "source_url": "https://www.ameli.fr/assure/droits-demarches/vie-professionnelle-retraite/emploi-salarie/salarie",
+    "quote": "Vous bénéficiez de l'assurance accidents du travail - maladies professionnelles (AT/MP) dès votre embauche, sans conditions d'ouverture de droit à remplir."
+  },
+  {
+    "question": "If I hold a VLS-TS visa, does my employer have to request a work authorization for me?",
+    "reference_answer": "No. If you hold a VLS-TS or a 'vie privée et familiale' residence card, the employer is exempt from requesting a work authorization.",
+    "rule_key": "work_authorization_exemption",
+    "source_url": "https://www.service-public.fr/particuliers/vosdroits/F2728",
+    "quote": "L'employeur est dispensé de demander une autorisation de travail."
+  },
+  {
+    "question": "With a 'recherche d'emploi/création d'entreprise' card, what conditions must a salaried job meet?",
+    "reference_answer": "The job must correspond to your training or research, and the pay must exceed €2,800.53.",
+    "rule_key": "job_search_card_work",
+    "source_url": "https://www.service-public.fr/particuliers/vosdroits/F2728",
+    "quote": "Cependant, l'emploi doit obligatoirement correspondre à la formation ou aux recherches de l'étranger et la rémunération doit être supérieure à"
+  },
+  {
+    "question": "What am I allowed to work in if I hold a talent card?",
+    "reference_answer": "The talent card allows you to carry out the professional activity that enabled you to obtain it.",
+    "rule_key": "talent_work_authorization_exemption",
+    "source_url": "https://www.service-public.fr/particuliers/vosdroits/F2728",
+    "quote": "permet d'exercer l'activité professionnelle qui a permis de l'obtenir."
+  }
+]

@@ -53,7 +53,8 @@ def plan(case_id: str):
             .order("created_at", desc=True).limit(20).execute().data)
     last_plan = next((r for r in runs if r["agent"] == "planner" and r["case_id"] == case_id), None)
     return {"case": case, "steps": steps, "activity": runs,
-            "next_best_action": last_plan["metrics"].get("next_best_action") if last_plan else None}
+            "next_best_action": last_plan["metrics"].get("next_best_action") if last_plan else None,
+            "latest_plan": last_plan["metrics"].get("plan") if last_plan else None}
 
 
 @app.post("/cases/{case_id}/delay")
@@ -89,4 +90,8 @@ def simulate_rule_change(body: RuleEdit):
         raise HTTPException(400, "text to replace not found in latest snapshot")
     edited = text.replace(body.find, body.replace)
     ingest = pipeline.run_source(src, override_text=edited)
+    pending = db.table("events").select("id,payload").eq("type", "rule.changed").is_("processed_at", "null").execute().data
+    for ev in pending:
+        db.table("events").update({"payload": {**ev["payload"], "edit": {"source_url": body.source_url,
+                                   "before": body.find, "after": body.replace}}}).eq("id", ev["id"]).execute()
     return {"ingest": ingest, "replans": agents.watcher(), "mode": "simulated source edit"}

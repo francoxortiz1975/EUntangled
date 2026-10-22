@@ -1,0 +1,322 @@
+{
+  "summary": {
+    "no_data": {
+      "accuracy": 0.6,
+      "valid_source": 0.0
+    },
+    "grounded": {
+      "accuracy": 0.667,
+      "valid_source": 1.0
+    },
+    "n": 15
+  },
+  "rows": [
+    {
+      "question": "I'm a non-EU citizen moving to Paris for a salaried job. Do my accompanying family members who are also non-EU nationals need their own residence permits if I'm an EEA or Swiss citizen?",
+      "no_data": {
+        "answer": "Your question mixes two situations, so here are both. (1) If you are an EEA or Swiss citizen: you do not need a residence permit yourself. Your non-EU spouse/partner, children under 21 or dependent, and dependent ascendants do not automatically share your rights without paperwork. They need an entry visa if their nationality requires one (it is free and issued on an accelerated basis). If they stay more than 3 months, they should apply for their own residence card as a 'family member of an EU/EEA/Swiss citizen' (carte de séjour 'membre de la famille d'un citoyen de l'UE'), generally valid 5 years, via the French online foreign-national portal (ANEF) or the prefecture. (2) If you are actually a non-EU citizen: your family members are not covered by the EU free-movement rules. Each adult family member needs their own residence permit. Normally this is a family-linked permit such as 'vie privée et familiale', or the accompanying-family card if you hold a Talent Passport or similar. Children generally need a document such as the DCEM, or a residence permit from age 18. Which case applies depends on your nationality, so confirm which one you mean. I cannot check live sources, so please confirm current procedures on the official French immigration site before relying on this.",
+        "correct": true,
+        "valid_source": false,
+        "citations": [
+          "https://immigration.interieur.gouv.fr/"
+        ]
+      },
+      "grounded": {
+        "answer": "The rules provided do not say whether accompanying non-EU family members need their own residence permits, so I can't answer this from them. The question also conflicts with the case file. You describe yourself as a non-EU citizen, and the file lists Ana Torres as non-EU (Ecuador), but the question asks about being an EEA or Swiss citizen. The rules say nothing about the EEA/Swiss free-movement regime or how it treats family members, so please confirm which status applies. What the rules do say is limited and only partly related. (1) A card obtained as spouse or child of a long-term EU resident from another EU member state does not allow work during the first year, and this applies only in that specific situation (last verified 2026-10-22). (2) The holder of a long-term resident-EU card from another EU country must apply for a French residence permit within 3 months of entering France, and this also applies only to that situation (last verified 2026-10-22). (3) Family members who live in France with the worker for more than 3 months are covered by French Assurance Maladie. This concerns health coverage, not permit requirements (last verified 2026-10-22). Because the rules are silent and the premise is inconsistent, please confirm the requirements for each family member with an immigration specialist or the competent prefecture before relocating.",
+        "correct": false,
+        "valid_source": true,
+        "citations": [
+          "https://www.service-public.fr/particuliers/vosdroits/F2728",
+          "https://www.service-public.fr/particuliers/vosdroits/F2728",
+          "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france"
+        ]
+      }
+    },
+    {
+      "question": "Is opening a bank account in France under the right to an account free of charge?",
+      "no_data": {
+        "answer": "Yes, for the basic services. Under the 'droit au compte' procedure, the Banque de France designates a bank that must open the account for you. That bank must then provide the 'services bancaires de base' free of charge. These include opening and holding the account, a monthly statement, cash deposits and withdrawals, direct debits, transfers, a payment card with authorization on each use, and a limited number of cheques. The Banque de France procedure itself costs nothing. This is different from opening an ordinary account without a refusal, where the bank may charge fees for cards, packages and other services, so compare offers. A non-EU employee needs to be lawfully resident in France, with a residence permit or visa and proof of address, and to have been refused by at least one bank. This is based on my recollection of the rules, which I could not check live, so confirm on the official page before relying on it.",
+        "correct": true,
+        "valid_source": false,
+        "citations": [
+          "https://www.service-public.fr/particuliers/vosdroits/F2325"
+        ]
+      },
+      "grounded": {
+        "answer": "Yes, if the account is opened under the right to an account (droit au compte). The rules state that opening such an account and using the basic banking services are free of charge. The account agreement is limited to basic banking services (account opening, maintenance and closure, bank details, SEPA payments, bank card, cash deposits and withdrawals, etc.). Not everything is free: if an operation is executed with insufficient funds, an intervention commission applies, capped at 4 € per operation and 20 € per month. Also note that this applies only to accounts opened specifically under the right to an account. The rules provided do not say whether a standard account opened outside this scheme is free, and they do not say whether you are eligible for the right to an account. Related to closure, the bank designated by the Banque de France may close the account on its own if you no longer meet the domicile or residence requirements. It must send a reasoned decision by post and give 2 months' notice, except where the account was used for illegal operations or inaccurate information was provided. For eligibility or details on your situation, confirm with your bank or a specialist.",
+        "correct": true,
+        "valid_source": true,
+        "citations": [
+          "https://www.service-public.fr/particuliers/actualites/A15560",
+          "https://www.service-public.fr/particuliers/actualites/A15560"
+        ]
+      }
+    },
+    {
+      "question": "If I open a bank account under the right to an account and make a transaction with insufficient funds, how much can the bank charge me in intervention commissions?",
+      "no_data": {
+        "answer": "Intervention commissions (fees for handling an irregular transaction, such as a payment with insufficient funds) are capped by French law, and the cap depends on your status, not on the right to an account as such. (1) Standard cap for all customers: €8 per transaction and €80 per month. (2) If the bank classifies you as financially fragile: €4 per transaction and €20 per month. (3) If you take the bank's specific offer for financially fragile customers (Offre Clientèle Fragile): €1 per transaction and €10 per month. Opening an account under the right to an account (droit au compte) gives you the basic banking services, which are free of charge. These do not include an overdraft, and the card is usually a systematic-authorization card, so an over-balance payment is normally declined rather than overdrawn. Because of that, you should rarely incur these fees, and you should ask the bank to assess whether you qualify for the fragile-customer caps. I am relying on my recollection of the Code monétaire et financier (arts. L312-1, L312-1-3, R312-4-2 and following) and the Banque de France guidance. I could not check the current text, so confirm the figures on the official pages before relying on them.",
+        "correct": false,
+        "valid_source": false,
+        "citations": [
+          "https://www.banque-france.fr/fr/a-votre-service/particuliers/droit-au-compte",
+          "https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006072026/"
+        ]
+      },
+      "grounded": {
+        "answer": "Under the right to an account (droit au compte), intervention commissions, which apply when an operation is executed with insufficient funds, are capped at 4 € per operation and 20 € per month in total. Opening the account and using basic banking services are free. The rules provided do not say whether this cap applies to other fees outside intervention commissions, so confirm that with your bank or a specialist.",
+        "correct": true,
+        "valid_source": true,
+        "citations": [
+          "https://www.service-public.fr/particuliers/actualites/A15560"
+        ]
+      }
+    },
+    {
+      "question": "How long must my family have lived with me in France before they are covered by French health insurance (Assurance Maladie)?",
+      "no_data": {
+        "answer": "There is generally no long minimum wait for your family. Under French universal health coverage (PUMa), people from outside the EU must normally show stable, regular residence in France, which includes a 3-month residence condition. That 3-month condition is generally waived for family members who join an insured person, such as a salaried worker. Your spouse and children can therefore usually be registered as ayants droit once they hold a valid residence permit or visa and you are affiliated through your job, usually after your employer's declaration and your registration with the CPAM. Where the waiver does not apply, the waiting period is up to 3 months. Children are usually covered more easily. I could not confirm the exact rules or current wording of the page below, so check with your local CPAM, as the outcome depends on each family member's visa or residence permit.",
+        "correct": false,
+        "valid_source": false,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/arrivee-france"
+        ]
+      },
+      "grounded": {
+        "answer": "According to the rule provided, your family members are covered by French Assurance Maladie once they have lived in France with you for more than 3 months. From that point they receive benefits in kind under French law (source: ameli.fr, last verified 2026-10-22). The rules do not say how your family would be covered during those first 3 months, so please confirm that with your CPAM or a mobility specialist. The source page is written for expatriate workers, and the rules do not say whether every detail applies to your salarié permit. Your case file lists you as single, so check who would count as an accompanying family member. The rules also do not cover the immigration status your family would need to join you. Separately, as an employee you are automatically affiliated with the general social security scheme and the CPAM for your place of residence (source: ameli.fr employee page, last verified 2026-10-22).",
+        "correct": true,
+        "valid_source": true,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france",
+          "https://www.ameli.fr/assure/droits-demarches/vie-professionnelle-retraite/emploi-salarie/salarie"
+        ]
+      }
+    },
+    {
+      "question": "If my bank account was opened under the right to an account, can the bank close it, and how must it inform me?",
+      "no_data": {
+        "answer": "Yes, but only in limited cases. Under the French right to an account (droit au compte, Code monétaire et financier art. L312-1 and R312-2), the bank cannot close the account simply because it wants to. As I recall the rules, closure is allowed mainly where (1) you deliberately used the account for operations the bank has reason to consider illegal, or (2) you gave false information to obtain it. Other grounds are listed in the legislation, such as your no longer meeting the conditions for the right, so check the current text. The bank must notify the closure in writing (normally by registered letter or an equivalent durable written notice) and state the reasons. It must also give at least 2 months' notice so you can find another bank. For serious misuse, closure can be faster. You can contest the closure and ask the Banque de France or the banking mediator (médiateur bancaire) to review it. I could not check the live text, so confirm the current wording and notice periods on the sources cited. Being a non-EU salaried employee in Paris does not change these closure rules.",
+        "correct": true,
+        "valid_source": false,
+        "citations": [
+          "https://www.service-public.fr/particuliers/vosdroits/F2325",
+          "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041581390/"
+        ]
+      },
+      "grounded": {
+        "answer": "Yes, but only in limited circumstances. According to the rules provided, the bank designated by the Banque de France may decide on its own to close an account opened under the right to an account, but only if one of the listed closure conditions is met. One listed condition is that you no longer meet the domicile or residence requirements. The rules provided only quote this condition, and the full list of conditions is not included, so I cannot confirm the others. How the bank must inform you: it must send you its reasoned decision by post (courrier) and must also inform the Banque de France. Notice period: you get 2 months' notice, except in two cases, where the account was deliberately used for illegal operations or where inaccurate information was provided. The rules do not state whether notice is waived in any other situation. Because the full list of closure conditions is not in the provided rules, and because your residence status could matter for the domicile/residence condition, confirm the details with your bank or a banking/relocation specialist.",
+        "correct": true,
+        "valid_source": true,
+        "citations": [
+          "https://www.service-public.fr/particuliers/actualites/A15560"
+        ]
+      }
+    },
+    {
+      "question": "How much notice does the bank have to give me before closing my right-to-an-account bank account?",
+      "no_data": {
+        "answer": "Under France's 'droit au compte' rules (Code monétaire et financier, art. L312-1), a bank that opened your account through the Banque de France designation procedure must give you written notice of closure at least 2 months in advance. Closure is only allowed for specific reasons, such as using the account for illegal purposes, giving false information, or opening another account elsewhere. In the most serious cases, such as suspected illegal use or false information, the bank may be able to close the account immediately or with shorter notice. This is based on my own knowledge of the rules, not a live check of the source, so confirm the current wording on Légifrance or with the Banque de France before relying on it. Your closure letter should also state the reasons.",
+        "correct": true,
+        "valid_source": false,
+        "citations": [
+          "https://www.banque-france.fr/fr/a-votre-service/particuliers/droit-au-compte",
+          "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041572461"
+        ]
+      },
+      "grounded": {
+        "answer": "Under the rules provided, the bank must give you 2 months' notice before closing an account opened under the right to an account (droit au compte). The bank designated by the Banque de France may decide on its own to close the account only if one of the listed closure conditions is met, for example if you no longer meet the domicile or residence requirements. It must send you its reasoned decision by post and inform the Banque de France. The 2-month notice does not apply in two cases: the account was deliberately used for illegal operations, or inaccurate information was provided. The rules I was given do not list every closure condition, so for your situation, especially given the residence-related condition and your permit status, confirm with your bank or a specialist.",
+        "correct": true,
+        "valid_source": true,
+        "citations": [
+          "https://www.service-public.fr/particuliers/actualites/A15560"
+        ]
+      }
+    },
+    {
+      "question": "I hold a Passeport Talent - salarié permit and live in Paris. Which health insurance office do I deal with for affiliation and reimbursements?",
+      "no_data": {
+        "answer": "You deal with the Caisse Primaire d'Assurance Maladie (CPAM) de Paris, which is part of the Assurance Maladie general scheme (régime général), for both affiliation and reimbursements. As a salaried employee, your coverage is tied to your work. Your employer declares you when you start, and you then register with the CPAM for your place of residence, which in your case is Paris. Typical steps: (1) create an ameli.fr account and request affiliation, giving your residence permit (Passeport Talent - salarié), a full birth certificate with parentage details (with a sworn translation if it is not in French), proof of address, and your bank details (RIB). (2) Receive your social security number and carte Vitale. (3) Choose a médecin traitant. (4) Submit reimbursement claims through your ameli account or the carte Vitale; the CPAM reimburses the base-rate portion. Your employer must also enrol you in a collective complementary health plan (mutuelle), which covers the remainder. Contact the CPAM de Paris through your ameli account or by phone on 3646. I cannot browse live, so please check the ameli.fr Paris pages for current addresses, contact details and required documents.",
+        "correct": true,
+        "valid_source": false,
+        "citations": [
+          "https://www.ameli.fr/paris/assure"
+        ]
+      },
+      "grounded": {
+        "answer": "As an employee, you are automatically attached to the general social security scheme and affiliated with the health insurance fund for your place of residence. Since you live in Paris (metropolitan France), that fund is the CPAM (caisse primaire d'assurance maladie). Your professional activity alone entitles you to reimbursement of health costs, and no minimum activity needs to be proven. Two related points: (1) work accident/occupational disease (AT/MP) cover applies from hiring with no eligibility conditions; (2) cash benefits (sickness, maternity, disability, death) require a minimum work duration or contribution amount. If you choose to be reimbursed by French Assurance Maladie for care received in Ecuador, send the paid invoices and proofs of payment with form S3125 to your French health insurance fund. Limits of the rules provided: they do not name a specific Paris CPAM office or branch, and they do not say how your Passeport Talent - salarié permit affects the affiliation steps. For the exact office and the affiliation procedure for your situation, confirm with your CPAM or an immigration/social security specialist.",
+        "correct": false,
+        "valid_source": true,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/vie-professionnelle-retraite/emploi-salarie/salarie",
+          "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france"
+        ]
+      }
+    },
+    {
+      "question": "If I keep living in another EU/EEA country while working in France, where do I request the S1 form?",
+      "no_data": {
+        "answer": "Request the S1 from the French health insurance fund (the CPAM) that covers your place of work in France, which is your employer's location. The Centre National des Soins à l'Étranger (CNSE) in Vannes may handle the file instead, depending on your case. As an employee in France you are insured under the French system, even though you live in another EU/EEA country. France, as the state of employment, issues the S1. You then register that S1 with the health insurer in your country of residence, which gives you healthcare there at France's expense. Your employer's payroll or HR team can usually help start the request. As a non-EU national, you can generally use this EU coordination route only if you are legally resident in the other EU/EEA country. It does not apply the same way to Denmark, Switzerland or the UK. This answer is from memory and I have not checked the live pages, so confirm the exact office and procedure with your CPAM or on the CLEISS and ameli sites before acting.",
+        "correct": true,
+        "valid_source": false,
+        "citations": [
+          "https://www.cleiss.fr/particuliers/venir/soins/ue/travailleur-frontalier.html",
+          "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france"
+        ]
+      },
+      "grounded": {
+        "answer": "The rules provided do not say where to request an S1 form if you keep living in another EU/EEA country while working in France. None of them covers S1 issuance, cross-border worker health coverage, or which institution handles the request. I can't answer this from the rules, so please confirm with a social security or mobility specialist, or directly with the health insurance bodies in France and in your country of residence. The rules do contain related points, but none answers your question. (1) The Ameli sources cover health coverage for family members who live in France with a worker for more than 3 months, and reimbursement of care received abroad using form S3125. Both apply to people who reside in France, not to cross-border residents, so they should not be treated as S1 guidance (Ameli page, last verified 2026-10-22). (2) The residence permit rule applies only to holders of a long-term resident-EU card from another EU country, who must apply for a French residence permit within 3 months of entering France (service-public F2728, last verified 2026-10-22). Your profile lists you as a non-EU national from Ecuador, so check with a specialist how your own residence status in the other EU/EEA country affects your right to work in France and your permit requirements.",
+        "correct": false,
+        "valid_source": true,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france",
+          "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france",
+          "https://www.service-public.fr/particuliers/vosdroits/F2728"
+        ]
+      }
+    },
+    {
+      "question": "How can I have my insurance, employment or residence periods in my home country taken into account in France?",
+      "no_data": {
+        "answer": "It depends on whether France has a bilateral social security agreement with your home country. Non-EU countries are not covered by the EU coordination rules (Regulation 883/2004).\n\n1) If an agreement exists (France has about 40, e.g. USA, Canada/Québec, Japan, India, Morocco, Tunisia, Algeria, Turkey), periods of insurance, employment or residence completed at home can be added to your French periods ('totalisation'). This is mainly for opening pension rights and, depending on the agreement, sickness, maternity, disability, death and sometimes unemployment benefits. Check which branches your agreement covers on the CLEISS website, under the 'conventions bilatérales' page for your country.\n\n2) How to do it:\n- Register with French social security as soon as you start work. Your employer's payroll declarations (DSN) create your French insurance record.\n- Keep proof of your foreign periods: employer certificates, contribution or insurance statements, and a certificate of coverage from your home-country institution.\n- For a pension, file a single claim when you retire with your French pension fund (Assurance retraite/Carsat). It sends the claim to the foreign institution under the agreement, and each country pays a pro-rata pension for the periods completed under its own system.\n- For health or unemployment, present the foreign certificates to the CPAM or France Travail. They will only count them if the agreement provides for it.\n- If you are seconded by a foreign employer, ask the home-country institution for a certificate of detachment. It keeps you under the home system for a limited period and avoids double contributions.\n\n3) If there is no agreement, foreign periods are generally not counted in France. Each country then only considers its own periods, so you may need to buy back periods, rely on private insurance, or claim separately in each country.\n\nNote: I could not check live sources for this answer, so confirm the rules for your specific country and branch with CLEISS or your pension fund before relying on them.",
+        "correct": false,
+        "valid_source": false,
+        "citations": [
+          "https://www.cleiss.fr/docs/conventions/index.html",
+          "https://www.service-public.fr/particuliers/vosdroits/N19810"
+        ]
+      },
+      "grounded": {
+        "answer": "The rules provided do not cover how insurance, employment or residence periods completed in Ecuador are taken into account in France (for example, totalisation of periods under a bilateral social security agreement, or recognition of pension or unemployment periods). None of the rules address this, so I cannot say whether or how your Ecuadorian periods would count. Please confirm with a social security specialist, your local CPAM or the Caisse nationale d'assurance vieillesse (CNAV), or your employer's mobility/HR provider. Ask whether a France-Ecuador agreement applies to you and which certificates from the Ecuadorian institution you would need.\n\nWhat the rules do say, and which is only partly related:\n1) As an employee in France you are automatically attached to the general social security scheme and affiliated with the CPAM of your place of residence. Only your professional activity is taken into account, and no minimum activity needs to be proven for health cost reimbursement. Work accident and occupational disease cover applies from hiring with no eligibility conditions (source: ameli.fr, last verified 2026-10-22). This means your health reimbursement rights do not depend on prior periods abroad.\n2) Cash benefits (sickness, maternity, disability, death) require a minimum work duration or minimum contribution amount. The rules do not say whether periods in Ecuador count toward these minimums, so confirm this with a specialist (same source, last verified 2026-10-22).\n3) If you choose, you can be reimbursed by French Assurance Maladie for care received in your country of origin. Send paid invoices, proofs of payment and form S3125 to your French health insurance fund. This concerns care costs, not recognition of insurance periods (source: ameli.fr, last verified 2026-10-22).\n4) The residence rule provided concerns only holders of an EU long-term resident card from another EU country, so it does not appear to apply to you as an Ecuadorian national. It also does not address recognition of residence periods abroad (source: service-public.fr, last verified 2026-10-22).",
+        "correct": false,
+        "valid_source": true,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/vie-professionnelle-retraite/emploi-salarie/salarie",
+          "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france",
+          "https://www.service-public.fr/particuliers/vosdroits/F2728"
+        ]
+      }
+    },
+    {
+      "question": "If I receive medical care in my home country and want to be reimbursed by French Assurance Maladie, what do I need to send?",
+      "no_data": {
+        "answer": "Reimbursement is generally possible only if you are already affiliated to French health insurance (as a salaried employee you are, from the start of work) and the care was unforeseen during a temporary stay in your home country outside the EU/EEA. Planned care abroad normally is not covered. Send your local CPAM (Paris: CPAM de Paris) the following, either by post or through your ameli account: (1) the form 'Soins reçus à l'étranger' (Cerfa S3125/12267), completed and signed; (2) the original itemised invoices or care statements, showing the date, the care given, the practitioner and the amount; (3) proof of payment; (4) prescriptions for any medicines, tests or procedures; (5) a French translation if the documents are not in French (the CPAM may ask for it); (6) your social security number and bank details (RIB/IBAN). Reimbursement is made at French Sécurité sociale rates, not at what you actually paid, and it is converted at the exchange rate on the date of care. Your usual co-payment (ticket modérateur) still applies, and any complementary insurance (mutuelle) is separate. Hospitalisation abroad, or care abroad that was planned, usually needs prior approval from the CPAM medical service. If your home country has a bilateral social security agreement with France (e.g. Quebec, Morocco, Tunisia, Algeria), different procedures may apply. I could not check the live page. Confirm the current form number and procedure on ameli.fr or with your CPAM before sending.",
+        "correct": true,
+        "valid_source": false,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/europe-international/soins-etranger"
+        ]
+      },
+      "grounded": {
+        "answer": "If you choose to be reimbursed by French Assurance Maladie for care received in your home country (Ecuador), send the following to your French health insurance fund (your caisse d'assurance maladie in France, i.e. the CPAM for Paris): (1) the paid invoices, (2) proof of payment, and (3) form S3125 'Soins reçus à l'étranger - déclaration à compléter par l'assuré', completed by you. The rule does not specify a deadline, a fee, or the reimbursement rate or amount. It also does not say whether any additional documents (such as translations) are required, nor whether the care must meet particular conditions to be reimbursed. Confirm those points with your CPAM or a specialist before sending. Note that this depends on your being affiliated with French social security as an employee; as a salarié you are automatically attached to the general scheme and affiliated with the CPAM of your place of residence (source: ameli.fr employee page). The rules provided do not say how long affiliation takes after your 12 November 2026 start date, so check that your affiliation is active before submitting a claim.",
+        "correct": true,
+        "valid_source": true,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/europe-international/protection-sociale-france/travailleur-expatriation-france",
+          "https://www.ameli.fr/assure/droits-demarches/vie-professionnelle-retraite/emploi-salarie/salarie"
+        ]
+      }
+    },
+    {
+      "question": "As an employee in France, do I need to prove a minimum amount of work activity to have my health costs reimbursed?",
+      "no_data": {
+        "answer": "Yes, in principle, but the rule is a threshold and it has a fallback. Since the PUMa reform (Protection Universelle Maladie, 2016), health cover in France rests on either (a) a professional activity or (b) stable and regular residence in France. For the activity route, an employee must show a minimum level of work. As I recall it, that is at least 60 times the hourly SMIC in earnings in one month, 120 times over 2 months, or 600 times over 12 months. Equivalently, it is at least 150 hours worked in a quarter or 600 hours over 12 months. A new salaried employee with a regular contract declared by the employer normally has rights opened when the job starts, and the CPAM (local health insurance office) checks the threshold on the declared hours or earnings. If the activity threshold is not met, you can still be covered through the residence criterion. For a non-EU national this means holding a valid residence permit or visa and having lived in France in a stable and regular way, historically for 3 months. To get reimbursed you also need to register with the CPAM and get a social security number, which requires a valid residence permit, an employment contract or payslips, proof of address, and a birth certificate. I could not re-check the exact figures or the page text during this answer, and thresholds are tied to the SMIC, which changes each year, so confirm the current rules on ameli.fr or with your CPAM.",
+        "correct": false,
+        "valid_source": false,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/principes/assurance-maladie-activite-professionnelle"
+        ]
+      },
+      "grounded": {
+        "answer": "No. For health cost reimbursement (illness or maternity), employees in France do not have to prove a minimum amount of work activity. As an employee you are automatically attached to the general social security scheme and affiliated with the health insurance fund (CPAM in metropolitan France, so the Paris-area CPAM for you) of your place of residence. Your professional activity alone gives you the right to reimbursement, and the source states: \"Les salariés n'ont plus à justifier d'une activité minimale.\" Work accident and occupational disease insurance (AT/MP) also applies from the day you are hired, with no eligibility conditions. One exception: cash benefits (sickness, maternity, disability, death) may require a minimum work duration or a minimum contribution amount. This is separate from reimbursement of health costs. The rules provided do not give the exact thresholds for cash benefits, so confirm them with your CPAM or a specialist. Your case is also flagged \"at_risk\". The rules provided do not explain why, and they do not cover how your residence permit or start date (2026-11-12) might affect your affiliation. Confirm these points with a specialist.",
+        "correct": true,
+        "valid_source": true,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/vie-professionnelle-retraite/emploi-salarie/salarie"
+        ]
+      }
+    },
+    {
+      "question": "From when am I covered by work accident and occupational disease insurance once I'm hired in France?",
+      "no_data": {
+        "answer": "You are covered from your first day of work. Work accident and occupational disease insurance (AT-MP) in France has no minimum qualifying period, no minimum hours and no minimum contributions. It applies from the moment you start work under an employment contract, including during any trial period, and whether the contract is permanent, fixed-term or part-time. It covers accidents at work, accidents on the usual commute between home and work, and recognised occupational diseases. Your employer pays for it entirely, and nothing is deducted from your salary. Your employer must file the pre-hiring declaration (DPAE) with URSSAF before you start. If they fail to do so, your cover still applies. After an accident, your employer must be notified within 24 hours, and the employer then declares it to the Caisse Primaire d'Assurance Maladie (CPAM). As a non-EU national you should hold a valid work authorisation or visa/residence permit allowing salaried work. Employment without authorisation is unlawful for the employer, but French law still protects you against work accidents. Please check the current rules on the official page, because I could not check it live and this is based on my knowledge of the rules.",
+        "correct": true,
+        "valid_source": false,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/maladie-accident-hospitalisation/accident-travail-maladie-professionnelle"
+        ]
+      },
+      "grounded": {
+        "answer": "You are covered by work accident and occupational disease insurance (AT/MP) from the moment you are hired (\"dès votre embauche\"). No eligibility conditions need to be met first. As an employee you are automatically attached to the general social security scheme. For you, that means cover should begin on your hiring date, which the case file lists as 2026-11-12. Two limits apply. First, this AT/MP rule is separate from cash benefits for sickness, maternity, disability and death, which do require a minimum work duration or minimum contributions. Second, the rules provided do not say how AT/MP cover is affected if your work authorization or residence permit is not in order at the time of hire. The case is marked \"at_risk\", so confirm the permit and hiring formalities with your employer's HR or a specialist.",
+        "correct": true,
+        "valid_source": true,
+        "citations": [
+          "https://www.ameli.fr/assure/droits-demarches/vie-professionnelle-retraite/emploi-salarie/salarie"
+        ]
+      }
+    },
+    {
+      "question": "If I hold a VLS-TS visa, does my employer have to request a work authorization for me?",
+      "no_data": {
+        "answer": "Generally no, not as a separate step after you arrive. A VLS-TS carrying the mention 'salarié' (or 'travailleur temporaire') is issued on the basis of a work authorization that your employer must already have obtained from the French labour authorities (DDETS/DREETS, via the foreign-worker platform) before the consulate issued the visa. The visa, once validated, therefore serves as both residence and work permit for that employer and job. What still applies: (1) you must validate the VLS-TS online on the ANEF site within 3 months of arrival, and it only counts as a residence permit after validation; (2) your employer must still file the pre-hiring declaration (DPAE) and verify your right to work with the prefecture; (3) a new work authorization application is needed if you change employer, job category, or work outside the scope of the original authorization. Exceptions: if your VLS-TS is for another purpose (e.g. student, visitor, family member), your work rights differ, and some statuses such as Talent Passport are exempt from the standard work-authorization procedure. I could not check the live pages, so this is based on my knowledge of the rules as of 2024. Please confirm on the official pages and with your employer's HR team or the prefecture.",
+        "correct": false,
+        "valid_source": false,
+        "citations": [
+          "https://administration-etrangers-en-france.interieur.gouv.fr",
+          "https://www.service-public.fr"
+        ]
+      },
+      "grounded": {
+        "answer": "No. If you hold a VLS-TS visa, you may work as an employee and your employer does not need to request a work authorization for you (rule: work_authorization_exemption). The source says: \"L'employeur est dispensé de demander une autorisation de travail.\" The only exception in the rules is a card obtained as the spouse or child of a long-term EU resident from another EU member state, which does not allow work during the first year. That exception does not appear to apply to your case, since you are single and the case file lists a salarié permit, but please confirm how your visa was issued. Separately, your employer still has to check the authenticity of your residence permit with the prefecture of the place of hiring at least 2 working days before your effective hiring date. This check is not required if you are registered as a jobseeker with France Travail. It is deemed done if the prefecture does not reply within 2 working days (rules: employer_permit_verification, residence_permit_verification). Your start date is 2026-11-12, so this check should be requested before then. The rules provided do not say how this check applies to a VLS-TS specifically, so confirm the exact process with an immigration specialist or the prefecture. The seasonal worker rule (work authorization required) applies only to 'travailleur saisonnier' cards and is not relevant to a standard VLS-TS.",
+        "correct": true,
+        "valid_source": true,
+        "citations": [
+          "https://www.service-public.fr/particuliers/vosdroits/F2728",
+          "https://www.service-public.fr/particuliers/vosdroits/F2728",
+          "https://www.service-public.fr/particuliers/vosdroits/F2728",
+          "https://www.service-public.fr/particuliers/vosdroits/F2728"
+        ]
+      }
+    },
+    {
+      "question": "With a 'recherche d'emploi/création d'entreprise' card, what conditions must a salaried job meet?",
+      "no_data": {
+        "answer": "The job must be related to the holder's training (the master's-level or equivalent degree earned in France) and pay a gross salary of at least 1.5 times the SMIC. If both conditions are met, the holder can apply to change status to a 'salarié' or 'travailleur temporaire' residence permit. The labour-market situation ('situation de l'emploi') is then not used against the application. The job-search card lasts up to 12 months and cannot be renewed. This comes from my recollection of CESEDA (art. L.422-14, formerly L.311-11) and the Service-Public guidance. I could not check the live pages, so the 1.5×SMIC threshold and the article number should be confirmed with the prefecture or the official sources before you rely on them.",
+        "correct": false,
+        "valid_source": false,
+        "citations": [
+          "https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006070158"
+        ]
+      },
+      "grounded": {
+        "answer": "With a 'recherche d'emploi/création d'entreprise' card, you may take a salaried job without your employer having to request a work authorization. The job must meet two conditions: (1) it must correspond to your training or research, and (2) the pay must exceed €2,800.53. The 60% limit does not apply to this card. Note that the rules provided do not state whether the €2,800.53 figure is monthly or annual, or its exact reference period, and the quoted source text is truncated before the amount. Please confirm the exact threshold and its period with the prefecture or an immigration specialist. Also, the rules provided do not say whether your own card type matches your case. Your case lists permit_type 'salarie', not the job-search card, so confirm which card you will hold. Separately, before hiring, the employer must verify your permit's authenticity with the prefecture at least 2 working days beforehand, unless you are registered as a jobseeker with France Travail. If the prefecture does not respond within 2 working days, the employer's obligation is considered fulfilled.",
+        "correct": true,
+        "valid_source": true,
+        "citations": [
+          "https://www.service-public.fr/particuliers/vosdroits/F2728",
+          "https://www.service-public.fr/particuliers/vosdroits/F2728"
+        ]
+      }
+    },
+    {
+      "question": "What am I allowed to work in if I hold a talent card?",
+      "no_data": {
+        "answer": "A talent card (carte de séjour pluriannuelle « passeport talent ») ties your right to work to the category it was issued under. It is not an open work permit. If you hold the 'highly qualified employee' category, you may work as a salaried employee in the qualified job and with the salary level stated in your employment contract. Other categories cover other activities: researcher, employee of an innovative company, corporate officer (mandataire social), entrepreneur or business creator, investor, artist, or person of international renown. Each is limited to the activity that justified the card. A change of employer or job within the same category is generally possible. A move to a substantially different activity or category, or a salary below the required threshold, usually means you must notify or apply to the prefecture for a change of status or a new card. Your spouse and children who get the family 'passeport talent' card may work in any job. I cannot check live sources, so the details below may be out of date. Salary thresholds and category conditions are revised regularly, so confirm them with the prefecture or the official page before you rely on them.",
+        "correct": true,
+        "valid_source": false,
+        "citations": [
+          "https://www.service-public.fr/particuliers/vosdroits/N110"
+        ]
+      },
+      "grounded": {
+        "answer": "The rules I have do not cover the 'talent card' (passeport talent), so I can't say what work it allows. I don't want to guess. The closest rule is for a different card, the 'recherche d'emploi/création d'entreprise' card. It allows salaried work without the employer requesting a work authorization, but only if the job matches the holder's training or research and the pay exceeds €2,800.53. That rule is specific to that card, and you should not assume it applies to a talent card. Separately, the rules say the employer must check the authenticity of a foreign national's work-authorizing residence permit with the prefecture at least 2 working days before hiring. That check is not required if the person is registered as a jobseeker with France Travail. Your case file lists your permit type as 'salarie', not a talent card, so please confirm which permit you will actually hold. Then confirm the work rights attached to it with an immigration specialist or the prefecture before your 2026-11-12 start date.",
+        "correct": false,
+        "valid_source": true,
+        "citations": [
+          "https://www.service-public.fr/particuliers/vosdroits/F2728",
+          "https://www.service-public.fr/particuliers/vosdroits/F2728"
+        ]
+      }
+    }
+  ],
+  "mode": "recorded"
+}

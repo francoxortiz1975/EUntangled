@@ -13,7 +13,7 @@ MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")
 
 db = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SERVICE_ROLE_KEY"])
 _ws = os.getenv("ANTHROPIC_WORKSPACE_ID")
-claude = Anthropic(default_headers={"anthropic-workspace-id": _ws} if _ws else None)
+claude = Anthropic(timeout=120, max_retries=4, default_headers={"anthropic-workspace-id": _ws} if _ws else None)
 _openai = OpenAI() if os.getenv("OPENAI_API_KEY") else None
 
 

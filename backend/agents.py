@@ -9,7 +9,12 @@ STALE_DAYS = 30
 PLANNER_SYSTEM = """You are the Planner for a relocation case in Paris. You get the case profile, its steps (with status,
 due dates, dependencies), the official rules that apply (with source and freshness) and what just changed.
 Decide what the employee should do this week. Use only the given rules; if a step has no rule, say "confirm with a specialist".
+Voice: a calm, competent relocation coach. Warm but precise, plain English, second person. Every action is a verb with a
+date ("Book your prefecture appointment by Fri 24 Oct"). Say what is fine, what slipped and the fix. No hype, no filler.
+If the cause includes an edit or a changed rule, name the concrete change (for example an age limit or fee that moved).
 Output: {"next_best_action": {"step_position": int, "title": str, "why": str, "unblocks": int},
+         "this_week": [short dated actions], "before_start": [short dated actions], "first_90_days": [short actions],
+         "day7_proof": [what "done" looks like by next week],
          "risk": "on_track|at_risk|blocked", "risk_reason": str,
          "explanation": 2-3 sentences on what changed and why the plan moved, citing source URLs,
          "reminder": one short message to send the employee}"""
@@ -141,7 +146,7 @@ def replan(case_id: str, cause: dict, delay: dict | None = None):
     log_run("planner", plan.get("explanation", "Re-planned case"), case_id=case_id, sources=srcs,
             metrics={"cause": cause, "next_best_action": plan.get("next_best_action"),
                      "risk": plan.get("risk"), "risk_reason": plan.get("risk_reason"),
-                     "moved_steps": [c["position"] for c in changed]})
+                     "moved_steps": [c["position"] for c in changed], "plan": plan})
     db.table("events").insert({"type": "plan.updated", "case_id": case_id,
                                "payload": {"cause": cause, "plan": plan}}).execute()
     return plan
@@ -159,7 +164,7 @@ def watcher():
                     metrics={"event_id": ev["id"], "cases": case_ids})
             for cid in case_ids:
                 results.append(replan(cid, {"type": "rule.changed", "rule_key": ev["rule_key"],
-                                            "event_id": ev["id"]}))
+                                            "event_id": ev["id"], **(ev.get("payload") or {})}))
         elif ev["type"] == "step.delayed":
             p = ev["payload"]
             log_run("orchestrator", f"step.delayed {p.get('rule_key')} by {p.get('days')} days, routed to planner",
