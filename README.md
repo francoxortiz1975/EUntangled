@@ -40,15 +40,7 @@ Moving to Paris as a non-EU employee means 10+ admin steps that depend on each o
 
 ### Evidence (recorded run, same model, same questions)
 
-**Run 1: 15 questions, references taken from official source text**
-
-| | No data (model alone) | EUntangled (grounded) |
-|---|---|---|
-| Answers with at least one working source link | **7 / 15** | **15 / 15** |
-| Every cited link works | 4 / 15 | 15 / 15 |
-| Correct against the official text | 9 / 15 (60%) | 10 / 15 (67%) |
-
-**Run 2: 20 hard, multi-condition questions, 5 per category**
+**20 hard, multi-condition questions, 5 per category**
 
 | Category | Correct: no data | Correct: EUntangled | Working source link: no data | Working source link: EUntangled |
 |---|---|---|---|---|
@@ -69,7 +61,7 @@ Limits:
 - References were not checked by a lawyer.
 - Tax, phone and transport have no rules in the corpus yet, so they are not scored.
 
-**Without data, about half the answers point to a page that doesn't load. With EUntangled, every answer points to a working official page, together with the date it was last verified.** Beyond accuracy, a chat model can't do the rest of the job:
+**Without data, half the answers point to a page that doesn't load. With EUntangled, every answer points to a working official page, together with the date it was last verified.** Beyond accuracy, a chat model can't do the rest of the job:
 - no memory of your case
 - no tracking of dependencies
 - no way to tell you when a rule changes after you asked

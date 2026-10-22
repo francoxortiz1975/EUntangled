@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>EUntangled · Evidence</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:16mm}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:11pt/1.5 Geist,system-ui,sans-serif;color:#0a0a0a;background:#fff}
+.mono{font-family:"Geist Mono",monospace}
+.k{font-size:8.5pt;text-transform:uppercase;letter-spacing:.08em;color:#666}
+h1{font-size:24pt;font-weight:600;letter-spacing:-.03em;margin:4px 0 6px}
+h2{font-size:12pt;font-weight:600;margin:22px 0 8px}
+p{color:#333}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.kpi{border:1px solid #e5e5e5;border-radius:10px;padding:14px 16px}
+.kpi b{font-size:26pt;font-weight:600;letter-spacing:-.03em}
+.kpi .arrow{color:#999;font-weight:400;margin:0 6px}
+table{width:100%;border-collapse:collapse;margin-top:6px;font-size:10pt}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid #eee}
+th{color:#666;font-weight:500;font-size:9pt}
+.ex{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:9.5pt}
+.ex div{border:1px solid #e5e5e5;border-radius:10px;padding:12px}
+.ex .bad{border-color:#f3c5c6;background:#fff7f7}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:10pt}
+.why b{display:block}
+.note{font-size:8.5pt;color:#666;margin-top:14px}
+</style></head><body>
+<div class="k">EUntangled · Evidence it works · Recorded run, 22 Oct 2026</div>
+<h1>Same model. Same questions. With and without our data.</h1>
+<p>We asked Claude 20 hard, tangled relocation questions a non-EU employee moving to Paris really asks: age, contract type, rent caps, deadlines and exceptions in one question. Once the model alone, once grounded in EUntangled's verified corpus of official French sources.</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Correct against the official text</div><b>45%<span class="arrow">→</span>75%</b></div>
+  <div class="kpi"><div class="k">Answers with a working official source</div><b>50%<span class="arrow">→</span>95%</b></div>
+</div>
+
+<h2>By category (5 questions each)</h2>
+<table>
+<tr><th>Category</th><th>Correct · model alone</th><th>Correct · EUntangled</th><th>Working source · alone</th><th>Working source · EUntangled</th></tr>
+<tr><td>Housing</td><td>1 / 5</td><td><b>5 / 5</b></td><td>1 / 5</td><td><b>5 / 5</b></td></tr>
+<tr><td>Bank</td><td>3 / 5</td><td><b>5 / 5</b></td><td>2 / 5</td><td>4 / 5</td></tr>
+<tr><td>Visa &amp; permits</td><td>3 / 5</td><td>3 / 5</td><td>3 / 5</td><td><b>5 / 5</b></td></tr>
+<tr><td>Health &amp; social security</td><td>2 / 5</td><td>2 / 5</td><td>4 / 5</td><td><b>5 / 5</b></td></tr>
+<tr><td><b>Total</b></td><td><b>9 / 20</b></td><td><b>15 / 20</b></td><td><b>10 / 20</b></td><td><b>19 / 20</b></td></tr>
+</table>
+
+<h2>One example: Visale rent guarantee</h2>
+<p style="font-size:9.5pt;margin-bottom:8px"><i>“I'm 25, a non-EU employee who just signed a permanent contract. Is there a deadline to apply for Visale after I was hired, and how are our resources counted?”</i></p>
+<div class="ex">
+  <div class="bad"><div class="k">Model alone · graded wrong</div>Says the age route means the post-hire deadline “does not apply to you” and admits it is “answering from memory”. Cites visale.fr and actionlogement.fr, not the official rule page.</div>
+  <div><div class="k">EUntangled · graded correct</div>Apply within 6 months of hiring, and get the visa before signing the lease. Flags the part of the rule it could not verify. Cites <span class="mono">service-public.fr F33453</span>, verified 22 Oct 2026.</div>
+</div>
+
+<h2>Why not just ask a chatbot?</h2>
+<div class="why">
+  <div><b>Trust</b>Every answer cites a tier-1 official page and the date it was verified. No source means “confirm with a specialist”, never a guess.</div>
+  <div><b>Freshness</b>Sources are re-fetched and content-hashed. A changed page creates a new rule version and fires <span class="mono">rule.changed</span>.</div>
+  <div><b>Personalised to the case</b>Rules are filtered by nationality group, permit type, city and start date. A chatbot answers for everyone at once.</div>
+  <div><b>Automatic tracking</b>Steps and dependencies live in a case graph. A delay shifts every downstream step and flags risk before the start date.</div>
+  <div><b>Agents that monitor</b>The Watcher re-plans every affected case when a rule changes, and tells the employee and the mobility team why.</div>
+  <div><b>Verified, not generated</b>The Extractor quotes the official text, and a separate Verifier drops unsupported fields (about 95% of fields passed).</div>
+</div>
+
+<p class="note">Method: questions and reference answers generated from verified quotes in the corpus (9 official sources, 20 active rules); answers graded by an LLM judge; source links checked with live HTTP requests during the run. Small sample, one run, indicative. References not reviewed by a lawyer. Tax, phone and transport not yet in the corpus. Raw data: github.com/francoxortiz1975/EUntangled/data.</p>
+</body></html>
