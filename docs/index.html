@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EUntangled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--fg:#0a0a0a;--muted:#666;--line:#eaeaea;--soft:#fafafa;--red:#e5484d;--amber:#f5a524;--green:#18a058}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font:14px/1.5 Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.mono{font-family:"Geist Mono",ui-monospace,monospace}
+header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{max-width:1200px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:16px}
+.logo{font-weight:600;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.logo i{width:18px;height:18px;background:var(--fg);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.tabs{display:flex;gap:4px;margin-left:24px}
+.tab{border:0;background:none;padding:6px 12px;border-radius:6px;color:var(--muted);cursor:pointer;font:inherit}
+.tab.on{color:var(--fg);background:var(--soft);box-shadow:inset 0 0 0 1px var(--line)}
+.sp{flex:1}
+.pill{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--muted)}
+.dot.live{background:var(--green)}.dot.off{background:var(--red)}
+main{max-width:1200px;margin:0 auto;padding:32px 24px 80px}
+h1{font-size:32px;font-weight:600;letter-spacing:-.04em}
+h2{font-size:14px;font-weight:600;margin-bottom:12px}
+.sub{color:var(--muted)}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-top:24px}
+.card{border:1px solid var(--line);border-radius:12px;background:#fff}
+.pad{padding:20px}
+.btn{font:inherit;font-weight:500;border-radius:8px;padding:8px 14px;cursor:pointer;border:1px solid var(--fg);background:var(--fg);color:#fff;transition:.15s}
+.btn:hover{opacity:.85}.btn.ghost{background:#fff;color:var(--fg);border-color:var(--line)}.btn.ghost:hover{border-color:var(--fg)}
+.btn:disabled{opacity:.4;cursor:wait}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.today{display:flex;gap:24px;align-items:flex-start;justify-content:space-between}
+.today .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.today .t{font-size:22px;font-weight:600;letter-spacing:-.03em;margin:6px 0}
+.count{text-align:right;min-width:120px}.count b{font-size:40px;font-weight:600;letter-spacing:-.04em;display:block;line-height:1}
+.steps{list-style:none}
+.step{display:grid;grid-template-columns:28px 1fr auto;gap:12px;padding:14px 20px;border-top:1px solid var(--line);cursor:pointer;align-items:center}
+.step:hover{background:var(--soft)}.step.sel{background:var(--soft)}
+.ix{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:11px;color:var(--muted)}
+.done .ix{background:var(--fg);color:#fff;border-color:var(--fg)}
+.st{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+.st.risk{color:var(--red);border-color:#f3c5c6;background:#fff5f5}
+.st.next{color:#fff;background:var(--fg);border-color:var(--fg)}
+.st.done{color:var(--muted)}
+.meta{font-size:12px;color:var(--muted)}
+.why dt{font-size:12px;color:var(--muted);margin-top:12px}.why dd{margin-top:2px}
+.why a{color:var(--fg);word-break:break-all}
+.feed{list-style:none;max-height:420px;overflow:auto}
+.feed li{padding:12px 20px;border-top:1px solid var(--line);font-size:13px}
+.feed .ag{font-weight:600}
+.tag{font-size:11px;padding:1px 6px;border-radius:4px;border:1px solid var(--line);color:var(--muted);margin-left:6px}
+.alert{border:1px solid #f3c5c6;background:#fff5f5;color:#8a1c1f;border-radius:12px;padding:16px 20px;margin-top:24px}
+.alert.info{border-color:var(--line);background:var(--soft);color:var(--fg)}
+.alert b{display:block;margin-bottom:4px}
+.lists{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.lists h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;font-weight:500}
+.lists li{margin-left:16px;font-size:13px;margin-bottom:4px}
+.ask{display:flex;gap:8px}.ask input{flex:1;font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:8px;outline:none}.ask input:focus{border-color:var(--fg)}
+.ans{margin-top:12px;font-size:13px;white-space:pre-wrap}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px 20px;border-top:1px solid var(--line);font-size:13px}
+th{font-weight:500;color:var(--muted);border-top:0;font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.kpi b{font-size:28px;font-weight:600;letter-spacing:-.04em;display:block}
+.spin{display:inline-block;width:12px;height:12px;border:2px solid var(--line);border-top-color:var(--fg);border-radius:50%;animation:s .7s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes s{to{transform:rotate(360deg)}}
+.hide{display:none}
+@media(max-width:860px){.grid,.lists,.kpis{grid-template-columns:1fr}.tabs{margin-left:0}.today{flex-direction:column}.count{text-align:left}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <div class="logo"><i></i>EUntangled</div>
+  <nav class="tabs"><button class="tab on" data-v="emp">Employee</button><button class="tab" data-v="mgr">Mobility team</button><button class="tab" data-v="ev">Evidence</button></nav>
+  <div class="sp"></div>
+  <span class="pill mono" id="conn"><span class="dot"></span>connecting</span>
+</div></header>
+
+<main>
+<!-- EMPLOYEE -->
+<section id="v-emp">
+  <div class="row" style="justify-content:space-between">
+    <div><h1 id="who">Ana Torres</h1><p class="sub" id="whosub">Software engineer · Quito → Paris · Northwind Consulting</p></div>
+    <div class="row">
+      <button class="btn ghost" id="b-delay">Simulate: appointment delayed 2 weeks</button>
+      <button class="btn" id="b-rule">Simulate: official rule changed</button>
+    </div>
+  </div>
+  <div id="busy" class="alert info hide"></div>
+  <div id="cause" class="alert hide"></div>
+
+  <div class="grid">
+    <div>
+      <div class="card pad today">
+        <div><div class="k">Today · next best action</div><div class="t" id="nba">Loading plan…</div><div class="sub" id="nbawhy"></div></div>
+        <div class="count"><b id="days">–</b><span class="meta">days to start · <span id="status">–</span></span></div>
+      </div>
+      <div class="card pad" id="planbox" style="margin-top:16px">
+        <h2>Your plan</h2>
+        <div class="lists">
+          <div><h3>This week</h3><ul id="l-week"><li class="meta">Run a re-plan to generate</li></ul></div>
+          <div><h3>Before you start</h3><ul id="l-before"></ul></div>
+          <div><h3>Day-7 proof</h3><ul id="l-proof"></ul></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <div class="pad" style="padding-bottom:12px"><h2 style="margin:0">Journey</h2><p class="meta">Click a step to see why, with its official source.</p></div>
+        <ul class="steps" id="steps"></ul>
+      </div>
+      <div class="card pad" style="margin-top:16px">
+        <h2>Ask EUntangled</h2>
+        <div class="ask"><input id="q" value="I'm 28 on a permanent contract. Can I use Visale for a 1,500 € flat in Paris?"><button class="btn" id="b-ask">Ask</button></div>
+        <div class="ans" id="ans"></div>
+      </div>
+    </div>
+    <div>
+      <div class="card pad why" id="why"><h2>Why this step</h2><p class="meta">Select a step.</p></div>
+      <div class="card" style="margin-top:16px">
+        <div class="pad" style="padding-bottom:8px"><h2 style="margin:0">Agent activity</h2><p class="meta">Every run is logged with its sources.</p></div>
+        <ul class="feed" id="feed"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANAGER -->
+<section id="v-mgr" class="hide">
+  <h1>Mobility team</h1><p class="sub">Northwind Consulting · Paris relocations</p>
+  <div class="kpis" id="kpis"></div>
+  <div class="card" style="margin-top:24px"><table><thead><tr><th>Employee</th><th>Route</th><th>Start</th><th>Progress</th><th>At risk</th><th>Status</th><th></th></tr></thead><tbody id="cases"></tbody></table></div>
+  <div class="card" style="margin-top:24px"><div class="pad" style="padding-bottom:8px"><h2 style="margin:0">Needs human review</h2><p class="meta">Conflicting sources and low-confidence rules, routed by the Resolver.</p></div><ul class="feed" id="review"></ul></div>
+</section>
+
+<!-- EVIDENCE -->
+<section id="v-ev" class="hide">
+  <h1>Evidence</h1><p class="sub">Same model, same 20 hard relocation questions. Model alone vs grounded in EUntangled's verified corpus. Recorded run, 22 Oct 2026.</p>
+  <div class="kpis">
+    <div class="card pad kpi"><span class="meta">Accuracy · model alone</span><b>45%</b></div>
+    <div class="card pad kpi"><span class="meta">Accuracy · EUntangled</span><b>75%</b></div>
+    <div class="card pad kpi"><span class="meta">Working official source · alone</span><b>50%</b></div>
+    <div class="card pad kpi"><span class="meta">Working official source · EUntangled</span><b>95%</b></div>
+  </div>
+  <div class="card" style="margin-top:24px"><table><thead><tr><th>Category</th><th>Correct · alone</th><th>Correct · EUntangled</th><th>Source · alone</th><th>Source · EUntangled</th></tr></thead><tbody>
+    <tr><td>Housing</td><td>1 / 5</td><td><b>5 / 5</b></td><td>1 / 5</td><td><b>5 / 5</b></td></tr>
+    <tr><td>Bank</td><td>3 / 5</td><td><b>5 / 5</b></td><td>2 / 5</td><td>4 / 5</td></tr>
+    <tr><td>Visa &amp; permits</td><td>3 / 5</td><td>3 / 5</td><td>3 / 5</td><td><b>5 / 5</b></td></tr>
+    <tr><td>Health &amp; social security</td><td>2 / 5</td><td>2 / 5</td><td>4 / 5</td><td><b>5 / 5</b></td></tr>
+  </tbody></table></div>
+  <p class="meta" style="margin-top:12px">References generated from verified quotes in the corpus, graded by an LLM judge; link checks are live HTTP requests. Small sample, indicative. Tax, phone and transport not yet covered by the corpus.</p>
+</section>
+</main>
+
+<script>
+const API = (new URLSearchParams(location.search).get("api") || localStorage.getItem("eu_api") || "http://localhost:8000").replace(/\/$/, "");
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u || ""; } };
+const day = (d) => d ? new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short" }) : "";
+const LABEL = { done: "Done", next: "Next", in_progress: "In progress", blocked: "Blocked", at_risk: "At risk" };
+let CID = null, PLAN = null, SEL = null;
+
+async function call(path, body) {
+  const r = await fetch(API + path, body ? { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) } : {});
+  if (!r.ok) throw new Error(path + " " + r.status);
+  return r.json();
+}
+function busy(msg) { $("busy").classList.toggle("hide", !msg); $("busy").innerHTML = msg ? `<span class="spin"></span>${msg}` : ""; document.querySelectorAll(".btn").forEach(b => b.disabled = !!msg); }
+
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === t));
+  ["emp", "mgr", "ev"].forEach(v => $("v-" + v).classList.toggle("hide", v !== t.dataset.v));
+  if (t.dataset.v === "mgr") loadCases();
+});
+
+async function load() {
+  const d = await call(`/cases/${CID}/plan`);
+  PLAN = d;
+  const c = d.case;
+  const days = Math.ceil((new Date(c.start_date) - new Date()) / 864e5);
+  $("days").textContent = days;
+  $("status").textContent = c.status.replace("_", " ");
+  $("status").style.color = c.status === "on_track" ? "" : "var(--red)";
+  const p = d.latest_plan;
+  const n = d.next_best_action || p?.next_best_action;
+  $("nba").textContent = n ? n.title : (d.steps.find(s => s.status === "next")?.title || "—");
+  $("nbawhy").textContent = n ? `Unblocks ${n.unblocks} step${n.unblocks === 1 ? "" : "s"}. ${(n.why || "").split(". ").slice(0, 2).join(". ")}` : "";
+  const li = (a) => (a && a.length ? a.map(x => `<li>${esc(x)}</li>`).join("") : `<li class="meta">—</li>`);
+  if (p) { $("l-week").innerHTML = li(p.this_week); $("l-before").innerHTML = li(p.before_start); $("l-proof").innerHTML = li(p.day7_proof); }
+  $("steps").innerHTML = d.steps.map((s, i) => `
+    <li class="step ${s.status} ${SEL === i ? "sel" : ""}" data-i="${i}">
+      <span class="ix">${s.status === "done" ? "✓" : s.position}</span>
+      <div><div>${esc(s.title)}</div><div class="meta">${s.due_date ? "Due " + day(s.due_date) : ""}${s.rule ? " · " + host(s.rule.source_url) : " · no verified source yet"}</div></div>
+      <span class="st ${s.status === "at_risk" ? "risk" : s.status === "next" ? "next" : s.status === "done" ? "done" : ""}">${LABEL[s.status] || s.status}</span>
+    </li>`).join("");
+  document.querySelectorAll(".step").forEach(el => el.onclick = () => { SEL = +el.dataset.i; why(d.steps[SEL]); load(); });
+  if (SEL == null) { const i = d.steps.findIndex(s => s.status === "next"); if (i >= 0) { SEL = i; why(d.steps[i]); } }
+  $("feed").innerHTML = d.activity.slice(0, 14).map(r => `
+    <li><span class="ag">${esc(r.agent[0].toUpperCase() + r.agent.slice(1))}</span><span class="tag">${r.mode}</span><span class="meta" style="float:right">${new Date(r.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}</span>
+    <div>${esc(r.action.length > 220 ? r.action.slice(0, 220) + "…" : r.action)}</div>
+    ${r.metrics?.verifier_pass_rate != null ? `<div class="meta mono">verifier pass rate ${r.metrics.verifier_pass_rate}</div>` : ""}
+    ${(r.sources || []).length ? `<div class="meta">${[...new Set(r.sources.map(host))].join(" · ")}</div>` : ""}</li>`).join("");
+}
+
+function why(s) {
+  const r = s.rule;
+  if (!r) { $("why").innerHTML = `<h2>Why this step</h2><p><b>${esc(s.title)}</b></p><div class="alert" style="margin-top:12px"><b>No verified official source yet</b>Confirm with a specialist. EUntangled never invents a rule.</div>`; return; }
+  const fresh = r.freshness === "fresh" ? "Fresh" : r.freshness === "stale" ? "Stale" : "Unverified";
+  const reqs = (r.requirements || []).slice(0, 4).map(q => `<li style="margin-left:16px">${esc(q.document || q.condition || "")}${q.deadline ? " · " + esc(q.deadline) : ""}${q.fee ? " · " + esc(q.fee) : ""}</li>`).join("");
+  const quote = r.requirements?.[0]?.quote;
+  $("why").innerHTML = `<h2>Why this step</h2><p><b>${esc(s.title)}</b></p>
+    <dl><dt>Rule</dt><dd>${esc(r.summary || r.title)}</dd>
+    ${reqs ? `<dt>Requirements</dt><dd><ul>${reqs}</ul></dd>` : ""}
+    ${quote ? `<dt>Official text</dt><dd class="mono" style="font-size:12px">“${esc(quote)}”</dd>` : ""}
+    <dt>Source</dt><dd><a href="${esc(r.source_url)}" target="_blank">${esc(r.source_url)}</a></dd>
+    <dt>Authority · verified · confidence</dt><dd>Tier ${r.source_tier} official · ${day(r.last_verified)} · ${Math.round((r.confidence || 0) * 100)}% <span class="tag">${fresh}</span>${r.status === "conflicting" ? '<span class="tag" style="color:var(--red)">Conflicting</span>' : ""}</dd></dl>`;
+}
+
+function showCause(r, title) {
+  if (!r) return;
+  $("cause").classList.remove("hide");
+  $("cause").innerHTML = `<b>${esc(title)}</b>${esc(r.explanation || "")}${r.reminder ? `<div style="margin-top:8px" class="mono">→ Reminder sent to Ana: ${esc(r.reminder)}</div>` : ""}`;
+}
+
+$("b-delay").onclick = async () => {
+  busy("Orchestrator routing the delay → Planner shifting dependent steps…");
+  try { const r = await call(`/cases/${CID}/delay`, { rule_key: "residence_permit", days: 14 }); await load(); showCause(r.results?.[0], "Re-planned: prefecture appointment delayed 14 days"); }
+  catch (e) { alert(e.message); } finally { busy(""); }
+};
+$("b-rule").onclick = async () => {
+  busy("Watcher: source hash changed → Extractor → Verifier → Resolver → rule.changed → Planner…");
+  const src = "https://www.service-public.fr/particuliers/vosdroits/F33453";
+  try {
+    let r;
+    try { r = await call("/simulate/rule-change", { source_url: src, find: "moins de 30 ans", replace: "moins de 26 ans" }); }
+    catch { r = await call("/simulate/rule-change", { source_url: src, find: "moins de 26 ans", replace: "moins de 30 ans" }); }
+    await load();
+    const i = r.ingest || {};
+    showCause(r.replans?.[0], `Official rule changed · Visale (service-public.fr) · verifier ${i.passed}/${i.checked} · ${r.replans?.length || 0} case re-planned · simulated edit, live pipeline`);
+  } catch (e) { alert(e.message); } finally { busy(""); }
+};
+$("b-ask").onclick = async () => {
+  $("ans").innerHTML = `<span class="spin"></span>Retrieval searching verified rules for Ana's case…`;
+  try {
+    const r = await call(`/cases/${CID}/ask`, { question: $("q").value });
+    $("ans").innerHTML = esc(r.answer) + (r.citations || []).map(c => `<div class="meta" style="margin-top:6px">Source: <a href="${esc(c.source_url)}" target="_blank" style="color:inherit">${esc(host(c.source_url))}</a> · verified ${esc((c.last_verified || "").slice(0, 10))}</div>`).join("");
+    load();
+  } catch (e) { $("ans").textContent = e.message; }
+};
+
+async function loadCases() {
+  const d = await call("/cases");
+  const rows = d.cases;
+  $("kpis").innerHTML = [["Active cases", rows.length], ["At risk", rows.filter(c => c.status !== "on_track").length], ["Steps at risk", rows.reduce((a, c) => a + c.steps_at_risk, 0)], ["Needs review", d.review_queue.length]]
+    .map(([k, v]) => `<div class="card pad kpi"><span class="meta">${k}</span><b>${v}</b></div>`).join("");
+  $("cases").innerHTML = rows.map(c => `<tr><td><b>${esc(c.employee_name)}</b><div class="meta">${esc(c.origin_country)} → ${esc(c.city)}</div></td><td>${esc(c.permit_type)} · ${esc(c.nationality_group)}</td><td>${day(c.start_date)}</td>
+    <td>${c.steps_done} / ${c.steps_total}</td><td>${c.steps_at_risk ? `<span style="color:var(--red)">${c.steps_at_risk}</span>` : "0"}</td>
+    <td><span class="st ${c.status === "on_track" ? "" : "risk"}">${c.status.replace("_", " ")}</span></td><td><button class="btn ghost" onclick="this.textContent='Nudged ✓'">Nudge</button></td></tr>`).join("");
+  $("review").innerHTML = d.review_queue.length ? d.review_queue.map(r => `<li><b>${esc(r.rule_key)}</b><span class="tag">${esc(r.reason)}</span><div class="meta">${esc(JSON.stringify(r.details).slice(0, 200))}</div></li>`).join("") : `<li class="meta">Nothing to review. All active rules verified against tier-1 sources.</li>`;
+}
+
+(async () => {
+  try {
+    const d = await call("/cases");
+    CID = (d.cases.find(c => c.employee_name === "Ana Torres") || d.cases[0]).id;
+    $("conn").innerHTML = `<span class="dot live"></span>live · ${host(API) || API}`;
+    await load();
+  } catch (e) {
+    $("conn").innerHTML = `<span class="dot off"></span>API offline`;
+    $("nba").textContent = "Backend not reachable";
+    $("nbawhy").textContent = `Start the API (uvicorn backend.main:app) or open with ?api=<url>. Tried ${API}.`;
+  }
+})();
+</script>
+</body>
+</html>
