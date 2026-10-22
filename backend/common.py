@@ -12,11 +12,12 @@ load_dotenv()
 MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")
 
 db = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SERVICE_ROLE_KEY"])
-claude = Anthropic()
+_ws = os.getenv("ANTHROPIC_WORKSPACE_ID")
+claude = Anthropic(default_headers={"anthropic-workspace-id": _ws} if _ws else None)
 _openai = OpenAI() if os.getenv("OPENAI_API_KEY") else None
 
 
-def ask_json(system: str, user: str, max_tokens: int = 4000):
+def ask_json(system: str, user: str, max_tokens: int = 12000):
     """One Claude call that must return JSON. Returns (parsed, usage)."""
     msg = claude.messages.create(
         model=MODEL,

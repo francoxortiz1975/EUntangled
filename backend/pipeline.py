@@ -137,6 +137,11 @@ def resolve(record: dict, confidence: float, source: dict, content_hash: str, tr
         db.table("rules").insert(row).execute()
         return "new"
     old = existing[0]
+    if old["source_id"] == source["id"] and old["content_hash"] == content_hash:
+        # Same snapshot, another chunk: merge requirements instead of versioning.
+        merged = old["requirements"] + [q for q in row["requirements"] if q not in old["requirements"]]
+        db.table("rules").update({"requirements": merged}).eq("id", old["id"]).execute()
+        return "merged"
     if json.dumps(old["requirements"], sort_keys=True) == json.dumps(row["requirements"], sort_keys=True):
         db.table("rules").update({"last_checked": now(), "last_verified": now()}).eq("id", old["id"]).execute()
         return "unchanged"
