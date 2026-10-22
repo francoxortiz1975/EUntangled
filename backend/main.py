@@ -84,8 +84,9 @@ def simulate_rule_change(body: RuleEdit):
     src = db.table("sources").select("*").eq("url", body.source_url).single().execute().data
     snap = (db.table("source_snapshots").select("clean_text").eq("source_id", src["id"])
             .order("fetched_at", desc=True).limit(1).execute().data)
-    if not snap or body.find not in snap[0]["clean_text"]:
+    text = snap[0]["clean_text"].replace("\xa0", " ") if snap else ""
+    if body.find not in text:
         raise HTTPException(400, "text to replace not found in latest snapshot")
-    edited = snap[0]["clean_text"].replace(body.find, body.replace)
+    edited = text.replace(body.find, body.replace)
     ingest = pipeline.run_source(src, override_text=edited)
     return {"ingest": ingest, "replans": agents.watcher(), "mode": "simulated source edit"}
