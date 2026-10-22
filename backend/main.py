@@ -9,6 +9,21 @@ app = FastAPI(title="EUntangled API")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
+@app.middleware("http")
+async def private_network(request, call_next):
+    # Lets the deployed site (https) call this API on localhost (Chrome Private Network Access).
+    if request.method == "OPTIONS" and request.headers.get("access-control-request-private-network"):
+        from fastapi.responses import Response
+        return Response(status_code=204, headers={
+            "Access-Control-Allow-Origin": request.headers.get("origin", "*"),
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Allow-Headers": "content-type",
+            "Access-Control-Allow-Private-Network": "true"})
+    resp = await call_next(request)
+    resp.headers["Access-Control-Allow-Private-Network"] = "true"
+    return resp
+
+
 class Delay(BaseModel):
     rule_key: str = "prefecture_appt"
     days: int = 14
