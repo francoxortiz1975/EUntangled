@@ -26,7 +26,7 @@ main{max-width:1200px;margin:0 auto;padding:32px 24px 80px}
 h1{font-size:32px;font-weight:600;letter-spacing:-.04em}
 h2{font-size:14px;font-weight:600;margin-bottom:12px}
 .sub{color:var(--muted)}
-.grid{display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-top:24px}
+.grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:24px;margin-top:24px}.grid>div{min-width:0}
 .card{border:1px solid var(--line);border-radius:12px;background:#fff}
 .pad{padding:20px}
 .btn{font:inherit;font-weight:500;border-radius:8px;padding:8px 14px;cursor:pointer;border:1px solid var(--fg);background:var(--fg);color:#fff;transition:.15s}
@@ -69,7 +69,40 @@ th{font-weight:500;color:var(--muted);border-top:0;font-size:12px}
 @keyframes s{to{transform:rotate(360deg)}}
 .hide{display:none}
 @media(max-width:860px){.grid,.lists,.kpis{grid-template-columns:1fr}.tabs{margin-left:0}.today{flex-direction:column}.count{text-align:left}}
+
+body{background:#fafafa}
+header{background:rgba(250,250,250,.8)}
+.card{box-shadow:0 1px 2px rgba(10,10,10,.04),0 8px 24px -12px rgba(10,10,10,.08)}
+.hero{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:28px;border-radius:16px;background:var(--fg);color:#fafafa;margin-top:24px}
+.hero .k{color:#a1a1a1}.hero .t{font-size:28px;font-weight:600;letter-spacing:-.03em;margin:8px 0 6px}
+.hero .sub{color:#c7c7c7;max-width:62ch}
+.hero .chips{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.chip{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid #333;color:#e5e5e5;display:inline-flex;gap:6px;align-items:center}
+.ring{position:relative;width:132px;height:132px}.ring svg{transform:rotate(-90deg)}
+.ring .c{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.ring .c b{font-size:34px;font-weight:600;letter-spacing:-.04em;line-height:1}.ring .c span{font-size:11px;color:#a1a1a1}
+.map{display:flex;align-items:flex-start;overflow-x:auto;padding:20px 20px 24px;gap:0;scroll-snap-type:x mandatory}
+.node{flex:0 0 120px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;cursor:pointer;scroll-snap-align:start}
+.node:not(:last-child)::after{content:"";position:absolute;top:17px;left:calc(50% + 20px);width:calc(100% - 40px);height:1px;background:var(--line)}
+.node.done:not(:last-child)::after{background:var(--fg)}
+.node .b{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:16px;transition:transform .2s cubic-bezier(.16,1,.3,1)}
+.node:hover .b{transform:scale(1.08)}
+.node.done .b{background:var(--fg);color:#fff;border-color:var(--fg)}
+.node.next .b{border:2px solid var(--fg);box-shadow:0 0 0 4px rgba(10,10,10,.06)}
+.node.at_risk .b{border-color:var(--red);color:var(--red);background:#fff5f5}
+.node.blocked .b{color:#b3b3b3;border-style:dashed}
+.node .n{font-size:12px;margin-top:8px;line-height:1.3;max-width:104px}
+.node .d{font-size:11px;color:var(--muted);margin-top:2px}
+.node.sel .n{font-weight:600}
+.skel{background:linear-gradient(90deg,#f0f0f0,#f7f7f7,#f0f0f0);background-size:200% 100%;border-radius:6px;animation:sh 1.2s infinite;height:14px}
+@keyframes sh{to{background-position:-200% 0}}
+.btn{display:inline-flex;align-items:center;gap:8px}.btn:active{transform:translateY(1px)}
+.btn.inv{background:#fafafa;color:var(--fg);border-color:#fafafa}.btn.inv-ghost{background:transparent;color:#fafafa;border-color:#3a3a3a}.btn.inv-ghost:hover{border-color:#fafafa;opacity:1}
+.fade{animation:fd .5s cubic-bezier(.16,1,.3,1) both}@keyframes fd{from{opacity:0;transform:translateY(8px)}}
+@media(prefers-reduced-motion:reduce){.fade,.skel{animation:none}}
+@media(max-width:860px){.hero{grid-template-columns:1fr}}
 </style>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 </head>
 <body>
 <header><div class="bar">
@@ -82,23 +115,27 @@ th{font-weight:500;color:var(--muted);border-top:0;font-size:12px}
 <main>
 <!-- EMPLOYEE -->
 <section id="v-emp">
-  <div class="row" style="justify-content:space-between">
-    <div><h1 id="who">Ana Torres</h1><p class="sub" id="whosub">Software engineer · Quito → Paris · Northwind Consulting</p></div>
-    <div class="row">
-      <button class="btn ghost" id="b-delay">Simulate: appointment delayed 2 weeks</button>
-      <button class="btn" id="b-rule">Simulate: official rule changed</button>
+  <div><h1 id="who">Ana Torres</h1><p class="sub" id="whosub">Software engineer, Quito to Paris. Starts at Northwind Consulting on 12 Nov 2026.</p></div>
+  <div class="hero fade">
+    <div>
+      <div class="k">Today, your next best action</div>
+      <div class="t" id="nba"><span class="skel" style="display:block;width:340px;height:28px;background-color:#222"></span></div>
+      <div class="sub" id="nbawhy"></div>
+      <div class="chips" id="chips"></div>
+      <div class="row" style="margin-top:20px">
+        <button class="btn inv" id="b-delay"><i class="ph ph-clock-countdown"></i>Appointment delayed 2 weeks</button>
+        <button class="btn inv-ghost" id="b-rule"><i class="ph ph-scroll"></i>Official rule changed</button>
+      </div>
     </div>
+    <div class="ring"><svg width="132" height="132"><circle cx="66" cy="66" r="58" stroke="#2a2a2a" stroke-width="8" fill="none"/><circle id="arc" cx="66" cy="66" r="58" stroke="#fafafa" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="364.4" stroke-dashoffset="364.4" style="transition:stroke-dashoffset .9s cubic-bezier(.16,1,.3,1),stroke .3s"/></svg>
+      <div class="c"><div><b id="days">–</b><br><span>days to start</span><br><span id="status">–</span></div></div></div>
   </div>
   <div id="busy" class="alert info hide"></div>
   <div id="cause" class="alert hide"></div>
 
   <div class="grid">
     <div>
-      <div class="card pad today">
-        <div><div class="k">Today · next best action</div><div class="t" id="nba">Loading plan…</div><div class="sub" id="nbawhy"></div></div>
-        <div class="count"><b id="days">–</b><span class="meta">days to start · <span id="status">–</span></span></div>
-      </div>
-      <div class="card pad" id="planbox" style="margin-top:16px">
+      <div class="card pad" id="planbox">
         <h2>Your plan</h2>
         <div class="lists">
           <div><h3>This week</h3><ul id="l-week"><li class="meta">Run a re-plan to generate</li></ul></div>
@@ -107,7 +144,8 @@ th{font-weight:500;color:var(--muted);border-top:0;font-size:12px}
         </div>
       </div>
       <div class="card" style="margin-top:16px">
-        <div class="pad" style="padding-bottom:12px"><h2 style="margin:0">Journey</h2><p class="meta">Click a step to see why, with its official source.</p></div>
+        <div class="pad" style="padding-bottom:0"><h2 style="margin:0">Journey</h2><p class="meta">Dependencies flow left to right. Click a step to see why, with its official source.</p></div>
+        <div class="map" id="map"></div>
         <ul class="steps" id="steps"></ul>
       </div>
       <div class="card pad" style="margin-top:16px">
@@ -183,6 +221,14 @@ async function load() {
   $("days").textContent = days;
   $("status").textContent = c.status.replace("_", " ");
   $("status").style.color = c.status === "on_track" ? "" : "var(--red)";
+  const done = d.steps.filter(s => s.status === "done").length, risk = d.steps.filter(s => s.status === "at_risk").length;
+  const arc = $("arc"); arc.style.strokeDashoffset = 364.4 * (1 - done / d.steps.length); arc.style.stroke = c.status === "on_track" ? "#fafafa" : "var(--amber)";
+  $("chips").innerHTML = `<span class="chip"><i class="ph ph-check-circle"></i>${done} of ${d.steps.length} done</span>` +
+    (risk ? `<span class="chip" style="border-color:#5a1f21;color:#ff9a9d"><i class="ph ph-warning"></i>${risk} at risk</span>` : "") +
+    `<span class="chip"><i class="ph ph-seal-check"></i>${d.steps.filter(s => s.rule).length} steps backed by official sources</span>`;
+  const ICON = { done: "ph-check", next: "ph-arrow-right", in_progress: "ph-circle-half", at_risk: "ph-warning", blocked: "ph-lock-simple" };
+  $("map").innerHTML = d.steps.map((s, i) => `<div class="node ${s.status} ${SEL === i ? "sel" : ""}" data-i="${i}"><div class="b"><i class="ph ${ICON[s.status] || "ph-circle"}"></i></div><div class="n">${esc(s.title)}</div><div class="d">${s.due_date ? day(s.due_date) : ""}</div></div>`).join("");
+  document.querySelectorAll(".node").forEach(el => el.onclick = () => { SEL = +el.dataset.i; why(d.steps[SEL]); load(); });
   const p = d.latest_plan;
   const n = d.next_best_action || p?.next_best_action;
   $("nba").textContent = n ? n.title : (d.steps.find(s => s.status === "next")?.title || "—");
