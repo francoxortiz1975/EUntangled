@@ -39,6 +39,87 @@ class RuleEdit(BaseModel):
     replace: str
 
 
+class NewCase(BaseModel):
+    name: str
+    origin: str = ""
+    nationality_group: str = "non_eu"
+    permit_type: str = "salarie"
+    family_status: str = "single"
+    start_date: str
+    housing: str = "searching"
+
+
+# Base step graph for a Paris move. EU nationals skip the visa and permit steps.
+TEMPLATE = [
+    (1, "employment_contract", "Sign employment contract", 0, []),
+    (2, "long_stay_visa", "Get long-stay visa", 0, [1]),
+    (3, "arrival", "Arrive in Paris", 0, [2]),
+    (4, "visa_validation", "Validate visa online", 20, [3]),
+    (5, "residence_permit", "Book prefecture appointment", 5, [4]),
+    (6, "housing_guarantee", "Sign lease and get proof of address", 120, [3]),
+    (7, "bank_account", "Open a French bank account", 45, [6]),
+    (8, "social_security", "Register for social security", 30, [6, 7]),
+    (9, "navigo_pass", "Get Navigo transport pass", 15, [6]),
+    (10, "tax_account", "Set up tax account", 20, [6]),
+]
+NON_EU_ONLY = {2, 4, 5}
+
+
+@app.post("/cases")
+def create_case(body: NewCase):
+    """Onboarding quiz: create a real case, build its steps from the template, then the Planner plans it."""
+    from datetime import date, timedelta
+    c = db.table("cases").insert({
+        "employee_name": body.name, "company": "Northwind Consulting", "origin_country": body.origin,
+        "nationality_group": body.nationality_group, "permit_type": body.permit_type,
+        "family_status": body.family_status, "city": "Paris", "start_date": body.start_date, "status": "on_track",
+    }).execute().data[0]
+    start = date.fromisoformat(body.start_date)
+    eu = body.nationality_group == "eu"
+    rows = [t for t in TEMPLATE if not (eu and t[0] in NON_EU_ONLY)]
+    keep = {t[0] for t in rows}
+    done = {1, 2, 3} if not eu else {1, 3}
+    if body.housing == "found":
+        done.add(6)
+    ins = []
+    for pos, key, title, mins, _ in rows:
+        due = start - timedelta(days=max(1, 28 - pos * 3))
+        ins.append({"case_id": c["id"], "position": pos, "rule_key": key, "title": title, "est_minutes": mins,
+                    "due_date": due.isoformat(), "status": "done" if pos in done else "blocked"})
+    steps = db.table("steps").insert(ins).execute().data
+    by_pos = {s["position"]: s for s in steps}
+    deps = [{"step_id": by_pos[p]["id"], "depends_on_step_id": by_pos[d]["id"]}
+            for p, _, _, _, ds in rows for d in ds if d in keep]
+    if deps:
+        db.table("step_dependencies").insert(deps).execute()
+    _unlock(c["id"])
+    agents.log_run("orchestrator", f"Created case for {body.name} from onboarding", case_id=c["id"])
+    plan = agents.replan(c["id"], {"type": "case.created", "profile": body.model_dump()})
+    return {"case_id": c["id"], "plan": plan}
+
+
+def _unlock(case_id: str):
+    """Blocked steps whose dependencies are all done become 'next'."""
+    _, steps, deps = agents.load_case(case_id)
+    status = {s["id"]: s["status"] for s in steps}
+    for s in steps:
+        if s["status"] != "blocked":
+            continue
+        needs = [d["depends_on_step_id"] for d in deps if d["step_id"] == s["id"]]
+        if all(status.get(n) == "done" for n in needs):
+            db.table("steps").update({"status": "next"}).eq("id", s["id"]).execute()
+
+
+@app.post("/cases/{case_id}/steps/{position}/complete")
+def complete_step(case_id: str, position: int):
+    """Mark a step done, unlock what depended on it, and have the Planner re-plan."""
+    db.table("steps").update({"status": "done"}).eq("case_id", case_id).eq("position", position).execute()
+    db.table("events").insert({"type": "step.completed", "case_id": case_id, "payload": {"position": position}}).execute()
+    _unlock(case_id)
+    agents.log_run("orchestrator", f"step.completed #{position}, routed to planner", case_id=case_id)
+    return agents.replan(case_id, {"type": "step.completed", "position": position})
+
+
 @app.get("/health")
 def health():
     return {"ok": True}
