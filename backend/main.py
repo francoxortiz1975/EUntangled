@@ -47,6 +47,7 @@ class NewCase(BaseModel):
     family_status: str = "single"
     start_date: str
     housing: str = "searching"
+    visa_status: str = "have"
 
 
 # Base step graph for a Paris move. EU nationals skip the visa and permit steps.
@@ -78,7 +79,12 @@ def create_case(body: NewCase):
     eu = body.nationality_group == "eu"
     rows = [t for t in TEMPLATE if not (eu and t[0] in NON_EU_ONLY)]
     keep = {t[0] for t in rows}
-    done = {1, 2, 3} if not eu else {1, 3}
+    # What is already behind the person, from the onboarding answers.
+    done = {1}
+    if not eu and body.visa_status in ("have", "in_france"):
+        done.add(2)
+    if body.visa_status == "in_france" or (eu and body.visa_status == "in_france"):
+        done.add(3)
     if body.housing == "found":
         done.add(6)
     ins = []
