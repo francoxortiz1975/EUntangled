@@ -120,6 +120,11 @@ def complete_step(case_id: str, position: int):
     return agents.replan(case_id, {"type": "step.completed", "position": position})
 
 
+@app.get("/")
+def root():
+    return {"service": "EUntangled API", "status": "ok", "docs": "/docs", "health": "/health"}
+
+
 @app.get("/health")
 def health():
     return {"ok": True}
