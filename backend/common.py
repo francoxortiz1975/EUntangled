@@ -11,6 +11,9 @@ load_dotenv()
 
 MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")
 
+_missing = [k for k in ("SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY", "ANTHROPIC_API_KEY") if not os.getenv(k)]
+if _missing:
+    raise RuntimeError(f"Missing environment variables: {', '.join(_missing)}. Add them in your host's settings and redeploy.")
 db = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SERVICE_ROLE_KEY"])
 _ws = os.getenv("ANTHROPIC_WORKSPACE_ID")
 claude = Anthropic(timeout=120, max_retries=4, default_headers={"anthropic-workspace-id": _ws} if _ws else None)
