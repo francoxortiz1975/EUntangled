@@ -199,7 +199,7 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:14px 24p
 </aside></div>
 
 <script>
-const API = (new URLSearchParams(location.search).get("api") || "http://localhost:8000").replace(/\/$/, "");
+const API = (new URLSearchParams(location.search).get("api") || "https://euntangled-rho.vercel.app").replace(/\/$/, "");
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u || ""; } };
