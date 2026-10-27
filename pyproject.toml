@@ -1,0 +1,18 @@
+[project]
+name = "euntangled"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "anthropic",
+  "openai",
+  "supabase",
+  "httpx",
+  "beautifulsoup4",
+  "pypdf",
+  "python-dotenv",
+]
+
+[tool.vercel]
+entrypoint = "backend.main:app"

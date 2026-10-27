@@ -1,6 +1,6 @@
-backend/
-supabase/
-data/
 web/
-*.py
-requirements.txt
+docs/
+voiceover/
+demo/
+.venv/
+*.pdf
